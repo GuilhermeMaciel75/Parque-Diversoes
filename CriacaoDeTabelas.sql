@@ -98,7 +98,36 @@ CREATE TABLE Joga (
 -- BRINCA
 
 -- INGRESSO
+CREATE TABLE Ingresso(
+	codigo NUMBER(3) NOT NULL,
+	valor NUMBER(3,2) NOT NULL,
+	CONSTRAINT ingresso_pkey PRIMARY KEY (codigo),
+);
 
 -- PROMOÇÃO
+CREATE TABLE Promocao(
+	codigo_promocao NUMBER(3) NOT NULL,
+	desconto NUMBER(2) NOT NULL,
+	restricao char(1) NOT NULL, -- S (Sim) / N(Não)??
+	data_inicio DATE NOT NULL,
+	data_termino DATE NOT NULL,
+
+	CONSTRAINT promocao_pkey PRIMARY KEY(codigo_promocao)
+
+);
 
 -- BILHETERIA
+CREATE TABLE Bilheteria(
+	ingresso NUMBER(3) NOT NULL,
+	cliente VARCHAR2(14) NOT NULL,
+	atendete VARCHAR2(14) NOT NULL,
+	promocao NUMBER(3) NOT NULL,
+	data_e_hora TIMESTAMP NOT NULL,
+
+
+	CONSTRAINT bilheteria_pkey PRIMARY KEY (ingresso, data_e_hora),
+	CONSTRAINT bilheteria_fkey1 FOREIGN KEY (ingresso) REFERENCES Ingresso (codigo)
+	CONSTRAINT bilheteria_fkey2 FOREIGN KEY (cliente) REFERENCES Cliente (cpf_cliente),
+	CONSTRAINT bilheteria_fkey3 FOREIGN KEY (atendete) REFERENCES Atendente (cpf_atendente),
+	CONSTRAINT bilheteria_fkey4 FOREIGN KEY (promocao) REFERENCES Promocao (codigo)
+);
