@@ -26,7 +26,7 @@ DROP TABLE Endereco;
 DROP TABLE Telefone;
 DROP TABLE Cliente;
 DROP TABLE Dependente;
-DROP TABLE Funcionário;
+DROP TABLE Funcionario;
 DROP TABLE Operador;
 DROP TABLE Atendente;
 DROP TABLE Area;
@@ -39,22 +39,24 @@ DROP TABLE Bilheteria;
 
 -- PESSOA
 CREATE TABLE Pessoa (
-	cpf varchar2(14) NOT NULL,
-	nome varchar2(25) NOT NULL,
-	data_nascimento date NOT NULL,
-	sexo char(1) NOT NULL,
+	cpf VARCHAR2(14) NOT NULL,
+	nome VARCHAR2(25) NOT NULL,
+	data_nascimento DATE NOT NULL,
+	sexo CHAR(1) NOT NULL,
 	CONSTRAINT pessoa_pkey PRIMARY KEY (cpf)
 );
 
 -- ENDEREÇO
 CREATE TABLE Endereco (
-	cpf_pessoa
-	cep varchar2(9) NOT NULL,
-	numero number NOT NULL,
-	rua varchar2(30) NOT NULL,
-	bairro varchar2(25) NOT NULL,
-	cidade varchar2(25) NOT NULL,
-	estado char(2)
+	cpf_pessoa VARCHAR2 NOT NULL,
+	cep VARCHAR2(9) NOT NULL,
+	numero NUMBER NOT NULL,
+	rua VARCHAR2(30) NOT NULL,
+	bairro VARCHAR2(25) NOT NULL,
+	cidade VARCHAR2(25) NOT NULL,
+	estado CHAR(2),
+	CONSTRAINT endereco_pkey PRIMARY KEY (cpf_pessoa),
+	CONSTRAINT endereco_fkey FOREIGN KEY (cpf_pessoa) REFERENCES Pessoa (cpf)
 );
 
 -- TELEFONE
@@ -64,10 +66,10 @@ CREATE TABLE Endereco (
 -- DEPENDENTE
 
 -- FUNCIONÁRIO
-CREATE TABLE Funcionário (
-	cpf_funcionario varchar2(14) NOT NULL,
-	salario number(5,2) NOT NULL,
-	cpf_supervisor varchar2(14),
+CREATE TABLE Funcionario (
+	cpf_funcionario VARCHAR2(14) NOT NULL,
+	salario NUMBER(5,2) NOT NULL,
+	cpf_supervisor VARCHAR2(14),
 	CONSTRAINT funcionario_pkey PRIMARY KEY (cpf_funcionario),
 	CONSTRAINT funcionario_fkey1 FOREIGN KEY (cpf_funcionario) REFERENCES Pessoa (cpf),
 	CONSTRAINT funcionario_fkey2 FOREIGN KEY (cpf_supervisor) REFERENCES Funcionário (cpf_funcionario)
@@ -84,9 +86,9 @@ CREATE TABLE Funcionário (
 
 -- JOGA
 CREATE TABLE Joga (
-	cliente varchar2(14) NOT NULL,
-	nome_dependente varchar2(25) NOT NULL,
-	nome_brinquedo varchar2(25) NOT NULL,
+	cliente VARCHAR2(14) NOT NULL,
+	nome_dependente VARCHAR2(25) NOT NULL,
+	nome_brinquedo VARCHAR2(25) NOT NULL,
 	CONSTRAINT joga_pkey PRIMARY KEY (cliente, nome_dependente, nome_brinquedo),
 	CONSTRAINT joga_fkey1 FOREIGN KEY (cliente) REFERENCES Cliente (cpf_cliente),
 	CONSTRAINT joga_fkey2 FOREIGN KEY (nome_dependente) REFERENCES Dependente (nome),
