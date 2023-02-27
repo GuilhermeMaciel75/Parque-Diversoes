@@ -48,7 +48,7 @@ CREATE TABLE Pessoa (
 
 -- ENDEREÇO
 CREATE TABLE Endereco (
-	cpf_pessoa VARCHAR2 NOT NULL,
+	cpf_pessoa VARCHAR2(14) NOT NULL,
 	cep VARCHAR2(9) NOT NULL,
 	numero NUMBER NOT NULL,
 	rua VARCHAR2(30) NOT NULL,
