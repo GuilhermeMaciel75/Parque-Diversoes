@@ -60,10 +60,30 @@ CREATE TABLE Endereco (
 );
 
 -- TELEFONE
+CREATE TABLE Telefone (
+  cpf_pessoa VARCHAR2(14) NOT NULL,
+  numero_telefone VARCHAR2(20) NOT NULL,
+  CONSTRAINT telefone_pkey PRIMARY KEY (cpf_pessoa, numero_telefone),
+  CONSTRAINT telefone_fkey FOREIGN KEY (cpf_pessoa) REFERENCES Pessoa (cpf)
+);
 
 -- CLIENTE
+CREATE TABLE Cliente (
+  cpf_cliente VARCHAR2(14) NOT NULL,
+  metodo_pagamento VARCHAR2(20) NOT NULL,
+  CONSTRAINT cliente_pkey PRIMARY KEY (cpf_cliente),
+  CONSTRAINT cliente_fkey FOREIGN KEY (cpf_cliente) REFERENCES Pessoa (cpf)
+);
 
 -- DEPENDENTE
+CREATE TABLE Dependente (
+  cpf_cliente VARCHAR2(14) NOT NULL,
+  nome VARCHAR2(25) NOT NULL,
+  data_nascimento DATE NOT NULL,
+  sexo CHAR(1) NOT NULL,
+  CONSTRAINT dependente_pkey PRIMARY KEY (cpf_cliente, nome),
+  CONSTRAINT dependente_fkey FOREIGN KEY (cpf_cliente) REFERENCES Cliente (cpf_cliente)
+);
 
 -- FUNCIONÁRIO
 CREATE TABLE Funcionario (
@@ -73,7 +93,6 @@ CREATE TABLE Funcionario (
 	CONSTRAINT funcionario_pkey PRIMARY KEY (cpf_funcionario),
 	CONSTRAINT funcionario_fkey1 FOREIGN KEY (cpf_funcionario) REFERENCES Pessoa (cpf),
 	CONSTRAINT funcionario_fkey2 FOREIGN KEY (cpf_supervisor) REFERENCES Funcionário (cpf_funcionario)
-
 );
 
 -- OPERADOR
@@ -98,14 +117,14 @@ CREATE TABLE Joga (
 -- BRINCA
 
 -- INGRESSO
-CREATE TABLE Ingresso(
+CREATE TABLE Ingresso (
 	codigo NUMBER(3) NOT NULL,
 	valor NUMBER(3,2) NOT NULL,
 	CONSTRAINT ingresso_pkey PRIMARY KEY (codigo),
 );
 
 -- PROMOÇÃO
-CREATE TABLE Promocao(
+CREATE TABLE Promocao (
 	codigo_promocao NUMBER(3) NOT NULL,
 	desconto NUMBER(2) NOT NULL,
 	restricao char(1) NOT NULL, -- S (Sim) / N(Não)??
@@ -117,7 +136,7 @@ CREATE TABLE Promocao(
 );
 
 -- BILHETERIA
-CREATE TABLE Bilheteria(
+CREATE TABLE Bilheteria (
 	ingresso NUMBER(3) NOT NULL,
 	cliente VARCHAR2(14) NOT NULL,
 	atendete VARCHAR2(14) NOT NULL,
