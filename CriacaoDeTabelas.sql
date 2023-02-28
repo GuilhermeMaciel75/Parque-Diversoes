@@ -100,8 +100,24 @@ CREATE TABLE Funcionario (
 -- ATENDENTE
 
 -- AREA
+CREATE TABLE Area (
+	categoria VARCHAR2(25) NOT NULL,
+    quantidade_de_brinquedos NUMBER(2) NOT NULL,
+    
+    CONSTRAINT area_pkey PRIMARY KEY (categoria)
+);
 
 -- BRINQUEDO
+CREATE TABLE Brinquedo (
+	nome VARCHAR2(25) NOT NULL,
+    area VARCHAR2(25) NOT NULL,
+    capacidade NUMBER(2) NOT NULL,
+    restricao_de_idade NUMBER(2) NOT NULL,
+    restricao_de_altura NUMBER(3,2) NOT NULL,
+    
+    CONSTRAINT brinquedo_pkey PRIMARY KEY (nome),
+    CONSTRAINT area_fkey FOREIGN KEY (area) REFERENCES Area (categoria)
+);
 
 -- JOGA
 CREATE TABLE Joga (
