@@ -97,8 +97,21 @@ CREATE TABLE Funcionario (
 );
 
 -- OPERADOR
+CREATE TABLE Operador (
+	cpf_operador VARCHAR2(14) NOT NULL,
+	brinquedo VARCHAR2(25) NOT NULL,
+	CONSTRAINT operador_pkey PRIMARY KEY (cpf_operador),
+	CONSTRAINT operador_fkey1 FOREIGN KEY (cpf_operador) REFERENCES Funcionario(cpf_funcionario),
+	CONSTRAINT operador_fkey2 FOREIGN KEY (brinquedo) REFERENCES Brinquedo(nome)
+);
 
 -- ATENDENTE
+CREATE TABLE Atendente (
+	cpf_atendente VARCHAR2(14) NOT NULL,
+	banca VARCHAR2(25) NOT NULL,
+	CONSTRAINT atendente_pkey PRIMARY KEY (cpf_atendente),
+	CONSTRAINT atendente_fkey FOREIGN KEY (cpf_atendente) REFERENCES Funcionario(cpf_funcionario)
+);
 
 -- AREA
 CREATE TABLE Area (
@@ -132,6 +145,13 @@ CREATE TABLE Joga (
 );
 
 -- BRINCA
+CREATE TABLE Brinca (
+	nome_brinquedo VARCHAR2(25) NOT NULL,
+	cliente VARCHAR2(14) NOT NULL,
+	CONSTRAINT brinca_pkey PRIMARY KEY (nome_brinquedo, cliente),
+	CONSTRAINT brinca_fkey1 FOREIGN KEY (nome_brinquedo) REFERENCES Brinquedo (nome),
+	CONSTRAINT brinca_fkey2 FOREIGN KEY (cliente) REFERENCES Cliente (cpf_cliente)
+);
 
 -- INGRESSO
 CREATE TABLE Ingresso (
