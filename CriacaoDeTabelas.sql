@@ -92,7 +92,8 @@ CREATE TABLE Funcionario (
 	cpf_supervisor VARCHAR2(14),
 	CONSTRAINT funcionario_pkey PRIMARY KEY (cpf_funcionario),
 	CONSTRAINT funcionario_fkey1 FOREIGN KEY (cpf_funcionario) REFERENCES Pessoa (cpf),
-	CONSTRAINT funcionario_fkey2 FOREIGN KEY (cpf_supervisor) REFERENCES Funcionário (cpf_funcionario)
+	CONSTRAINT funcionario_fkey2 FOREIGN KEY (cpf_supervisor) REFERENCES Funcionario (cpf_funcionario),
+	CONSTRAINT funcionario_check CHECK (salario >= 1310.00) -- CLÁUSULA CHECK
 );
 
 -- OPERADOR
