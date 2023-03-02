@@ -21,6 +21,7 @@ Bilheteria (5)
 
 */
 
+--Povoando Pessoa
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('999.999.999-99', 'Jubileu Amorim', to_date('14/03/1992', 'dd/mm/yy'), 'M');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('888.888.888-88', 'Adalto Joaquim', to_date('20/09/1988', 'dd/mm/yy'), 'M');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('777.777.777-77', 'Maria Joaquina', to_date('27/04/2000', 'dd/mm/yy'), 'F');
@@ -78,3 +79,38 @@ INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('101.101.101.01', '+5
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('101.101.101.01', '+55 31 99631 3695');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('202.202.202-02', '+55 98 99284 3640');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('303.303.303-03', '+55 85 97250 2315');
+
+--Povoando Area
+INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Radical', 7);
+INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Aquatico', 2);
+INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Aterrorizante', 3);
+INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Infantil', 5);
+INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Familiar', 9);
+
+--Povoando Brinquedo
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Super Tornado','Radical', 30, 12, 1.35);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Thunder','Radical', 35, 12, 1.30);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Over Loop','Radical', 25, 12, 1.35);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Move-It','Radical', 30, 12, 1.30);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Estilingue','Radical', 1, 12, 1.35);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Samba','Radical', 25, 12, 1.30);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Big Tower','Radical', 30, 12, 1.35);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Splash','Aquatico', 5, 6, 1.00);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Tchibum','Aquatico', 5, 10, 1.25);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Mansao do Terror','Aterrorizante', 10, 12, 1.30);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Trem Fantasma','Aterrorizante', 2, 8, 1.20);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Hora do Horror','Aterrorizante', 5, 10, 1.25);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Carrocel','Infantil', 15, 3, 0.85);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Trampolim','Infantil', 15, 3, 0.85);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Minhocao','Infantil', 15, 3, 0.85);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Trenzinho','Infantil', 25, 3, 0.85);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Mini Helicopteros','Infantil', 10, 3, 0.85);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Roda Gigante','Familiar', 40, 6, 1.00);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Barca','Familiar', 30, 6, 1.00);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Rock n Roll','Familiar', 40, 8, 1.20);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Auto Pista','Familiar', 20, 8, 1.20);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Salta Montes','Familiar', 15, 8, 1.20);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Dragao','Familiar', 20, 6, 1.00);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Ciclone','Familiar', 8, 8, 1.20);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Tapete Magico','Familiar', 15, 8, 1.20);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Wave Swinger','Familiar', 20, 8, 1.20);
