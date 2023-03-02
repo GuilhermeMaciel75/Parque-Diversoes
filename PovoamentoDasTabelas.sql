@@ -96,6 +96,13 @@ INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('101.101.101.01', '+5
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('101.101.101.01', '+55 31 99631 3695');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('202.202.202-02', '+55 98 99284 3640');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('303.303.303-03', '+55 85 97250 2315');
+INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('404.404.404-04', '+55 81 97954 0000');
+INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('505.505.505-05', '+55 81 98787 0808');
+INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('606.606.606-06', '+55 81 98090 7040');
+INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('707.707.707-07', '+55 81 95455 5675');
+INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('707.707.707-07', '+55 81 94345 7809');
+INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('808.808.808-08', '+55 81 97050 0101');
+INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('909.909.909-09', '+55 81 92109 6700');
 
 --Povoando Cliente
 INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('999.999.999-99', 'Cartao de Credito');
