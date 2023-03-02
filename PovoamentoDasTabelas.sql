@@ -124,7 +124,7 @@ INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('777.7
 INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('777.777.777-77', 'Rosane Vaz', to_date('18/12/2009', 'dd/mm/yy'), 'F');
 INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('444.444.444-44', 'Rone Gadelha', to_date('22/02/2010', 'dd/mm/yy'), 'M');
 INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('222.222.222-22', 'Guilherme Araujo', to_date('12/06/2009', 'dd/mm/yy'), 'M');
-INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('100.100.100-10', '002.002.002-02', 'Nicollas Eger', to_date('14/09/2008', 'dd/mm/yy'), 'M');
+INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('100.100.100-10', 'Nicollas Eger', to_date('14/09/2008', 'dd/mm/yy'), 'M');
 
 -- Povoando Funcionário 
 -- Atendentes
@@ -179,6 +179,16 @@ INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Roda Gigante','Familiar', 40, 6, 1.00);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Barca','Familiar', 30, 6, 1.00);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Ciclone','Familiar', 8, 8, 1.20); 
+
+-- Povoando Joga
+INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('999.999.999-99', 'Pietir Pires', 'Carrocel');
+INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('999.999.999-99', 'Raiane Pinheiro', 'Trampolim');
+INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('999.999.999-99', 'Geneval Silvino','Carrocel');
+INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('777.777.777-77', 'Telma Cordeiro', 'Trenzinho');
+INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('777.777.777-77', 'Rosane Vaz', 'Roda Gigante');
+INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('444.444.444-44', 'Rone Gadelha', 'Trenzinho');
+INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('222.222.222-22', 'Guilherme Araujo', 'Carrocel');
+INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('100.100.100-10', 'Nicollas Eger', 'Barca');
 
 --Povoamento Ingresso
 INSERT INTO Ingresso(codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 110.00); --Ingresso Normal
