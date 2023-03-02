@@ -22,9 +22,11 @@ Bilheteria (5)
 */
 
 --Povoando Pessoa
-INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('999.999.999-99', 'Jubileu Amorim', to_date('14/03/1992', 'dd/mm/yy'), 'M');
-INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('888.888.888-88', 'Adalto Joaquim', to_date('20/09/1988', 'dd/mm/yy'), 'M');
-INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('777.777.777-77', 'Maria Joaquina', to_date('27/04/2000', 'dd/mm/yy'), 'F');
+
+-- Clientes
+INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('999.999.999-99', 'Jubileu Amorim', to_date('14/03/1992', 'dd/mm/yy'), 'M'); 
+INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('888.888.888-88', 'Adalto Joaquim', to_date('20/09/1988', 'dd/mm/yy'), 'M'); 
+INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('777.777.777-77', 'Maria Joaquina', to_date('27/04/2000', 'dd/mm/yy'), 'F'); 
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('666.666.666-66', 'Ana Vitória', to_date('15/11/1997', 'dd/mm/yy'), 'F');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('555.555.555-55', 'Júlia Pereira', to_date('28/05/1999', 'dd/mm/yy'), 'F');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('444.444.444-44', 'Luís Amilton', to_date('07/01/1985', 'dd/mm/yy'), 'M');
@@ -32,17 +34,32 @@ INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('333.333.333-33', 
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('222.222.222-22', 'Abelardo Barbosa', to_date('30/09/1977', 'dd/mm/yy'), 'M');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('111.111.111-11', 'Joel Müller', to_date('26/09/1967', 'dd/mm/yy'), 'M');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('100.100.100-10', 'Carla Ramos', to_date('03/12/2001', 'dd/mm/yy'), 'F');
+
+-- Atendentes
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('200.200.200-20', 'Leonardo Lopes', to_date('29/02/1996', 'dd/mm/yy'), 'M');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('300.300.300-30', 'Leônidas Silva', to_date('09/03/1980', 'dd/mm/yy'), 'M');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('400.400.400-40', 'Helena Souza', to_date('02/10/1988', 'dd/mm/yy'), 'F');
+
+-- Operadores 
+-- Radicais
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('500.500.500-50', 'Juma Marruá', to_date('23/06/1990', 'dd/mm/yy'), 'F');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('600.600.600-60', 'José Leôncio', to_date('01/07/1972', 'dd/mm/yy'), 'M');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('700.700.700-70', 'Tereza Soares', to_date('31/01/1982','dd/mm/yy'), 'F');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('800.800.800-80', 'Clara Nascimento', to_date('28/10/1979', 'dd/mm/yy'), 'F');
+-- Aquáticos
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('900.900.900-90', 'Jaime Almeida', to_date('21/08/1991', 'dd/mm/yy'), 'M');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('101.101.101.01', 'Charles Xavier', to_date('13/05/1987', 'dd/mm/yy'), 'M');
+-- Terror
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('202.202.202-02', 'Ana Nóbrega', to_date('25/12/1984', 'dd/mm/yy'), 'F');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('303.303.303-03', 'Marcos Antônio', to_date('07/02/1988', 'dd/mm/yy'), 'M');
+-- Infantil
+INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('404.404.404-04', 'Luiza Texeira', to_date('24/11/1983', 'dd/mm/yy'), 'F');
+INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('505.505.505-05', 'Rafael Martins', to_date('07/10/1985', 'dd/mm/yy'), 'M');
+INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('606.606.606-06', 'Angélica Moraes', to_date('20/02/1989', 'dd/mm/yy'), 'F');
+-- Familiar
+INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('707.707.707-07', 'Horácio Espíndola', to_date('09/06/1970', 'dd/mm/yy'), 'M');
+INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('808.808.808-08', 'Solange Aguiar', to_date('28/12/1984', 'dd/mm/yy'), 'F');
+INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('909.909.909-09', 'Fátima Alves', to_date('13/05/1980', 'dd/mm/yy'), 'F');
 
 --Povoando Telefone
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('999.999.999-99', '+55 81 99902 2762');
@@ -102,40 +119,59 @@ INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('444.4
 INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('222.222.222-22', 'Guilherme Araujo', to_date('12/06/2009', 'dd/mm/yy'), 'M');
 INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('100.100.100-10', '002.002.002-02', 'Nicollas Eger', to_date('14/09/2008', 'dd/mm/yy'), 'M');
 
+-- Povoando Funcionário 
+-- Atendentes
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('200.200.200-20', 5000.00, NULL);
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('300.300.300-30', 4700.00, '200.200.200-20');
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('400.400.400-40', 4700.00, '200.200.200-20');
+-- Operadores
+-- Brinquedos Radicais
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('500.500.500-50', 6000.00, NULL)
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('600.600.600-60', 5500.00, '500.500.500-50');
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('700.700.700-70', 5500.00, '500.500.500-50');
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('800.800.800-80', 5500.00, '500.500.500-50');
+-- Brinquedos Aquáticos
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('900.900.900-90', 5500.00, NULL);
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('101.101.101-01', 5500.00, '900.900.900-90');
+-- Brinquedos Terror 
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('202.202.202-02', 6000.00, NULL);
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('303.303.303.02', 5500.00, '202.202.202-02');
+-- Brinquedos Infantis
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('404.404.404-04', 6000.00, NULL);
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('505.505.505-05', 5500.00, '404.404.404-04');
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('606.606.606-06', 5500.00, '404.404.404-04');
+-- Brinquedos Familiares 
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('707.707.707-07', 6000.00, NULL);
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('808.808.808-08', 5500.00, '707.707.707-07');
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('909.909.909-09', 5500.00, '707.707.707-07');
+
 --Povoando Area
-INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Radical', 7);
-INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Aquatico', 2);
-INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Aterrorizante', 3);
-INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Infantil', 5);
-INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Familiar', 9);
+INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Radical', 4); 
+INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Aquatico', 2); 
+INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Aterrorizante', 2); 
+INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Infantil', 3); 
+INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Familiar', 3);
 
 --Povoando Brinquedo
+-- Radicais
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Super Tornado','Radical', 30, 12, 1.35);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Thunder','Radical', 35, 12, 1.30);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Over Loop','Radical', 25, 12, 1.35);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Move-It','Radical', 30, 12, 1.30);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Estilingue','Radical', 1, 12, 1.35);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Samba','Radical', 25, 12, 1.30);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Big Tower','Radical', 30, 12, 1.35);
+-- Aquáticos
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Splash','Aquatico', 5, 6, 1.00);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Tchibum','Aquatico', 5, 10, 1.25);
+-- Terror
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Mansao do Terror','Aterrorizante', 10, 12, 1.30);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Trem Fantasma','Aterrorizante', 2, 8, 1.20);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Hora do Horror','Aterrorizante', 5, 10, 1.25);
+-- Infantil
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Carrocel','Infantil', 15, 3, 0.85);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Trampolim','Infantil', 15, 3, 0.85);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Minhocao','Infantil', 15, 3, 0.85);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Trenzinho','Infantil', 25, 3, 0.85);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Mini Helicopteros','Infantil', 10, 3, 0.85);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Trenzinho','Infantil', 25, 3, 0.85); 
+-- Familiar
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Roda Gigante','Familiar', 40, 6, 1.00);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Barca','Familiar', 30, 6, 1.00);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Rock n Roll','Familiar', 40, 8, 1.20);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Auto Pista','Familiar', 20, 8, 1.20);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Salta Montes','Familiar', 15, 8, 1.20);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Dragao','Familiar', 20, 6, 1.00);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Ciclone','Familiar', 8, 8, 1.20);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Tapete Magico','Familiar', 15, 8, 1.20);
-INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Wave Swinger','Familiar', 20, 8, 1.20);
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Ciclone','Familiar', 8, 8, 1.20); 
 
 --Povoamento Ingresso
 INSERT INTO Ingresso(codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 110.00); --Ingresso Normal
