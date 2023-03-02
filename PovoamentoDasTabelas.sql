@@ -48,7 +48,7 @@ INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('700.700.700-70', 
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('800.800.800-80', 'Clara Nascimento', to_date('28/10/1979', 'dd/mm/yy'), 'F');
 -- Aquáticos
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('900.900.900-90', 'Jaime Almeida', to_date('21/08/1991', 'dd/mm/yy'), 'M');
-INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('101.101.101.01', 'Charles Xavier', to_date('13/05/1987', 'dd/mm/yy'), 'M');
+INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('101.101.101-01', 'Charles Xavier', to_date('13/05/1987', 'dd/mm/yy'), 'M');
 -- Terror
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('202.202.202-02', 'Ana Nóbrega', to_date('25/12/1984', 'dd/mm/yy'), 'F');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('303.303.303-03', 'Marcos Antônio', to_date('07/02/1988', 'dd/mm/yy'), 'M');
@@ -92,8 +92,8 @@ INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('600.600.600-60', '+1
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('700.700.700-70', '+55 92 99957 0516');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('800.800.800-80', '+55 79 98230 6697');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('900.900.900-90', '+55 86 96947 4295');
-INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('101.101.101.01', '+55 31 98050 6343');
-INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('101.101.101.01', '+55 31 99631 3695');
+INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('101.101.101-01', '+55 31 98050 6343');
+INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('101.101.101-01', '+55 31 99631 3695');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('202.202.202-02', '+55 98 99284 3640');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('303.303.303-03', '+55 85 97250 2315');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('404.404.404-04', '+55 81 97954 0000');
@@ -133,7 +133,7 @@ INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('300.
 INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('400.400.400-40', 4700.00, '200.200.200-20');
 -- Operadores
 -- Brinquedos Radicais
-INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('500.500.500-50', 6000.00, NULL)
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('500.500.500-50', 6000.00, NULL);
 INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('600.600.600-60', 5500.00, '500.500.500-50');
 INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('700.700.700-70', 5500.00, '500.500.500-50');
 INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('800.800.800-80', 5500.00, '500.500.500-50');
@@ -142,7 +142,7 @@ INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('900.
 INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('101.101.101-01', 5500.00, '900.900.900-90');
 -- Brinquedos Terror 
 INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('202.202.202-02', 6000.00, NULL);
-INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('303.303.303.02', 5500.00, '202.202.202-02');
+INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('303.303.303-03', 5500.00, '202.202.202-02');
 -- Brinquedos Infantis
 INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('404.404.404-04', 6000.00, NULL);
 INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('505.505.505-05', 5500.00, '404.404.404-04');
@@ -156,27 +156,6 @@ INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('909.
 INSERT INTO Atendente (cpf_atendente, banca) VALUES ('200.200.200-20', 'Banca A');
 INSERT INTO Atendente (cpf_atendente, banca) VALUES ('300.300.300-30', 'Banca B');
 INSERT INTO Atendente (cpf_atendente, banca) VALUES ('400.400.400-40', 'Banca C');
-
---Povoando Operador
-    --Radicais
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('500.500.500-50', 'Super Tornado');
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('600.600.600-60', 'Thunder');
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('700.700.700-70', 'Over Loop');
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('800.800.800-80', 'Samba');
-    --Aquáticos
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('900.900.900-90', 'Splash');
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('101.101.101-01', 'Tchibum');
-    --Terror
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('202.202.202-02', 'Mansao do Terror');
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('303.303.303.02', 'Trem Fantasma');
-    --Infantil
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('404.404.404-04', 'Carrocel');
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('505.505.505-05', 'Trampolim');
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('606.606.606-06', 'Trenzinho');
-    --Familiar
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('707.707.707-07', 'Roda Gigante');
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('808.808.808-08', 'Barca');
-INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('909.909.909-09', 'Ciclone');
 
 --Povoando Area
 INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Radical', 4); 
@@ -205,6 +184,27 @@ INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Roda Gigante','Familiar', 40, 6, 1.00);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Barca','Familiar', 30, 6, 1.00);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Ciclone','Familiar', 8, 8, 1.20); 
+
+--Povoando Operador
+    --Radicais
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('500.500.500-50', 'Super Tornado');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('600.600.600-60', 'Thunder');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('700.700.700-70', 'Over Loop');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('800.800.800-80', 'Samba');
+    --Aquáticos
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('900.900.900-90', 'Splash');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('101.101.101-01', 'Tchibum');
+    --Terror
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('202.202.202-02', 'Mansao do Terror');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('303.303.303-03', 'Trem Fantasma');
+    --Infantil
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('404.404.404-04', 'Carrocel');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('505.505.505-05', 'Trampolim');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('606.606.606-06', 'Trenzinho');
+    --Familiar
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('707.707.707-07', 'Roda Gigante');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('808.808.808-08', 'Barca');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('909.909.909-09', 'Ciclone');
 
 -- Povoando Joga
 INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('999.999.999-99', 'Pietir Pires', 'Carrocel');
@@ -235,16 +235,16 @@ INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Trem Fantasma', '111.111.1
 INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Samba', '222.222.222-22');
 
 --Povoamento Ingresso
-INSERT INTO Ingresso(codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 110.00); --Ingresso Normal
-INSERT INTO Ingresso(codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 150.00); --Ingresso Para Show de horrores
-INSERT INTO Ingresso(codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 200.00); -- Ingresso com direito a alimentação
+INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 110.00); --Ingresso Normal
+INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 150.00); --Ingresso Para Show de horrores
+INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 200.00); -- Ingresso com direito a alimentação
 
 ---Povoamento Promocao
-INSERT INTO Promocao(codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 10, 'Pagamento em Dinheiro ou PIX', to_date('02/03/2023', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));
-INSERT INTO Promocao(codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 40, 'Desconto Funcionário',  to_date('01/01/2023', 'dd/mm/yy'),  to_date('01/01/2024', 'dd/mm/yy'));
-INSERT INTO Promocao(codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 50, 'Desconto estudante, professor, idoso',  to_date('08/10/2015', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));
-INSERT INTO Promocao(codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 60, 'Desconto Aniversário',  to_date('08/10/2015', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));
-INSERT INTO Promocao(codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 70, 'Sem acesso aos brinquedos do parque',  to_date('13/07/2012', 'dd/mm/yy'),  to_date('31/12/2026', 'dd/mm/yy'));
+INSERT INTO Promocao (codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 10, 'Pagamento em Dinheiro ou PIX', to_date('02/03/2023', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));
+INSERT INTO Promocao (codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 40, 'Desconto Funcionário',  to_date('01/01/2023', 'dd/mm/yy'),  to_date('01/01/2024', 'dd/mm/yy'));
+INSERT INTO Promocao (codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 50, 'Desconto estudante, professor, idoso',  to_date('08/10/2015', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));
+INSERT INTO Promocao (codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 60, 'Desconto Aniversário',  to_date('08/10/2015', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));
+INSERT INTO Promocao (codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 70, 'Sem acesso aos brinquedos do parque',  to_date('13/07/2012', 'dd/mm/yy'),  to_date('31/12/2026', 'dd/mm/yy'));
 
 --Povoamento Bilheteria
 --INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora)
