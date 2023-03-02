@@ -134,14 +134,13 @@ CREATE TABLE Operador (
 );
 
 -- JOGA
-CREATE TABLE Joga (
-	cliente VARCHAR2(14) NOT NULL,
-	nome_dependente VARCHAR2(25) NOT NULL,
-	nome_brinquedo VARCHAR2(25) NOT NULL,
-	CONSTRAINT joga_pkey PRIMARY KEY (cliente, nome_dependente, nome_brinquedo),
-	CONSTRAINT joga_fkey1 FOREIGN KEY (cliente) REFERENCES Cliente (cpf_cliente),
-	CONSTRAINT joga_fkey2 FOREIGN KEY (nome_dependente) REFERENCES Dependente (nome),
-	CONSTRAINT joga_fkey3 FOREIGN KEY (nome_brinquedo) REFERENCES Brinquedo (nome)
+CREATE TABLE Joga ( 
+	cliente VARCHAR2(14) NOT NULL, 
+	nome_dependente VARCHAR2(25) NOT NULL, 
+	nome_brinquedo VARCHAR2(25) NOT NULL, 
+	CONSTRAINT joga_pkey PRIMARY KEY (cliente, nome_dependente, nome_brinquedo),  
+	CONSTRAINT joga_fkey2 FOREIGN KEY (cliente, nome_dependente) REFERENCES Dependente (cpf_cliente, nome), 
+	CONSTRAINT joga_fkey3 FOREIGN KEY (nome_brinquedo) REFERENCES Brinquedo (nome) 
 );
 
 -- BRINCA
