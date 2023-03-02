@@ -159,19 +159,19 @@ CREATE SEQUENCE codigo_sequencia INCREMENT BY 1 START WITH 1;
 CREATE TABLE Ingresso (
 	codigo_sequencia INTEGER NOT NULL,
 	valor NUMBER(5,2) NOT NULL,
-	CONSTRAINT ingresso_pkey PRIMARY KEY (codigo),
+	
+	CONSTRAINT ingresso_pkey PRIMARY KEY(codigo_sequencia)
 );
 
 -- PROMOÇÃO
 CREATE TABLE Promocao (
 	codigo_promocao NUMBER(3) NOT NULL, --Tipo de promocao 
 	desconto NUMBER(2) NOT NULL, --Em porcentual
-	restricao char(1) NOT NULL, -- S (Sim) / N(Não)??
+	restricao VARCHAR2(50) NOT NULL,
 	data_inicio DATE NOT NULL,
 	data_termino DATE NOT NULL,
 
 	CONSTRAINT promocao_pkey PRIMARY KEY(codigo_promocao)
-
 );
 
 -- BILHETERIA
