@@ -152,6 +152,32 @@ INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('707.
 INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('808.808.808-08', 5500.00, '707.707.707-07');
 INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES ('909.909.909-09', 5500.00, '707.707.707-07');
 
+--Povoando Atendente
+INSERT INTO Atendente (cpf_atendente, banca) VALUES ('200.200.200-20', 'Banca A');
+INSERT INTO Atendente (cpf_atendente, banca) VALUES ('300.300.300-30', 'Banca B');
+INSERT INTO Atendente (cpf_atendente, banca) VALUES ('400.400.400-40', 'Banca C');
+
+--Povoando Operador
+    --Radicais
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('500.500.500-50', 'Super Tornado');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('600.600.600-60', 'Thunder');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('700.700.700-70', 'Over Loop');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('800.800.800-80', 'Samba');
+    --Aquáticos
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('900.900.900-90', 'Splash');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('101.101.101-01', 'Tchibum');
+    --Terror
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('202.202.202-02', 'Mansao do Terror');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('303.303.303.02', 'Trem Fantasma');
+    --Infantil
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('404.404.404-04', 'Carrocel');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('505.505.505-05', 'Trampolim');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('606.606.606-06', 'Trenzinho');
+    --Familiar
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('707.707.707-07', 'Roda Gigante');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('808.808.808-08', 'Barca');
+INSERT INTO Operador (cpf_operador, brinquedo) VALUES ('909.909.909-09', 'Ciclone');
+
 --Povoando Area
 INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Radical', 4); 
 INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Aquatico', 2); 
@@ -189,6 +215,24 @@ INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('777.777.777
 INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('444.444.444-44', 'Rone Gadelha', 'Trenzinho');
 INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('222.222.222-22', 'Guilherme Araujo', 'Carrocel');
 INSERT INTO Joga (cliente, nome_dependente, nome_brinquedo) VALUES ('100.100.100-10', 'Nicollas Eger', 'Barca');
+
+--Povoando Brinca
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Super Tornado',  '999.999.999-99');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Mansao do Terror', '100.100.100-10');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Thunder', '888.888.888-88');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Thunder', '111.111.111-11');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Tchibum', '333.333.333-33');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Barca', '100.100.100-10');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Mansao do Terror', '666.666.666-66');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Over Loop', '444.444.444-44');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Splash', '555.555.555-55');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Roda Gigante', '222.222.222-22');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Ciclone', '444.444.444-44');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Trem Fantasma', '888.888.888-88');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Roda Gigante', '777.777.777-77');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Samba', '999.999.999-99');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Trem Fantasma', '111.111.111-11');
+INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Samba', '222.222.222-22');
 
 --Povoamento Ingresso
 INSERT INTO Ingresso(codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 110.00); --Ingresso Normal
