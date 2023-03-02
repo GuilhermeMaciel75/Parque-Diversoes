@@ -61,6 +61,36 @@ INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('707.707.707-07', 
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('808.808.808-08', 'Solange Aguiar', to_date('28/12/1984', 'dd/mm/yy'), 'F');
 INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES ('909.909.909-09', 'Fátima Alves', to_date('13/05/1980', 'dd/mm/yy'), 'F');
 
+-- Povoando Endereço
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('999.999.999-99', '99999-999', 128, 'Rua do Espinheiro', 'Espinheiro', 'Recife', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('888.888.888-88', '88888-888', 13, 'Estrada dos Viajantes', 'Goiabeiras', 'Vitória', 'ES');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('777.777.777-77', '77777-777', 55, 'Avenida 1º de Maio', 'Ponta Verde', 'Maceió', 'AL');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('666.666.666-66', '66666-666', 23, 'Rua Açai', 'Castanheira', 'Boa Vista', 'RO');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('555.555.555-55', '55555-555', 88, 'Rua do Sol', 'São Marcos', 'São Luís', 'MA');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('444.444.444-44', '44444-444', 1042, 'Avenida Almirante', 'Coqueiros', 'Florianópolis', 'SC');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('333.333.333-33', '33333-333', 102, 'Rua Paysandu', 'Cidade Velha', 'Belém', 'PA');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('222.222.222-22', '22222-222', 10, 'Avenida Pantanal', 'Amambaí', 'Campo Grande', 'MS');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('111.111.111-11', '11111-111', 111, 'Avenida Santa Catarina', 'Água Verde', 'Blumenau', 'SC');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('100.100.100-10', '10010-010', 84, 'Rua Chico Anysio', 'Aldeota', 'Fortaleza', 'CE');
+
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('200.200.200-20', '20020-020', 99, 'Rua do Futuro', 'Iputinga', 'Recife', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('300.300.300-30', '30030-030', 300, 'Estrada da Batalha', 'Prazeres', 'Jaboatão dos Guararapes', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('400.400.400-40', '40040-040', 40, 'Avenida Caxangá', 'Cordeiro', 'Recife', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('500.500.500-50', '50050-050', 121, 'Avenida Central', 'Afogados', 'Recife', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('600.600.600-60', '60060-060', 67, 'Rua da Praia', 'Pilar', 'Ilha de Itamaracá', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('700.700.700-70', '70070-070', 31, 'Avenida Luiz Gonzaga', 'Bela Vista', 'Moreno', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('800.800.800-80', '80080-080', 101, 'Estrada Nova', 'São Francisco', 'Cabo de Santo Agostinho', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('900.900.900-90', '90090-090', 72, 'Rua do Navio', 'Piedade', 'Jaboatão dos Guararapes', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('101.101.101-01', '10110-101', 2034, 'Rua dos Girassóis', 'Centro', 'Camaragibe', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('202.202.202-02', '20220-202', 27, 'Rua Machado de Assis', 'Madalena', 'Recife', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('303.303.303-03', '30330-303', 99, 'Estrada da Glória', 'Campo Grande', 'Recife', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('404.404.404-04', '40440-404', 38, 'Avenida Ipiranga', 'Casa Amarela', 'Recife', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('505.505.505-05', '50550-505', 341, 'Rua do Beija-flor', 'Rio Doce', 'Olinda', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('606.606.606-06', '60660-606', 29, 'Rua Capibaribe', 'Jardim Atlântico', 'Olinda', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('707.707.707-07', '70770-707', 97, 'Rua Almirante', 'Centro', 'São Lourenço da Mata', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('808.808.808-08', '80880-808', 126, 'Estrada dos Alfaiates', 'Caetés I', 'Abreu e Lima', 'PE');
+INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES ('909.909.909-09', '90990-909', 202, 'Avenida dos Poetas', 'Várzea', 'Recife', 'PE');
+
 --Povoando Telefone
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('999.999.999-99', '+55 81 99902 2762');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('999.999.999-99', '+55 81 98417 1256');
