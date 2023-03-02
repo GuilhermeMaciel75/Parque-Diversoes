@@ -154,7 +154,7 @@ CREATE TABLE Brinca (
 );
 
 CREATE SEQUENCE codigo_sequencia INCREMENT BY 1 START WITH 1;
-
+CREATE SEQUENCE codigo_promocao INCREMENT BY 1 START WITH 1;
 -- INGRESSO
 CREATE TABLE Ingresso (
 	codigo_sequencia INTEGER NOT NULL,
@@ -165,7 +165,7 @@ CREATE TABLE Ingresso (
 
 -- PROMOÇÃO
 CREATE TABLE Promocao (
-	codigo_promocao NUMBER(3) NOT NULL, --Tipo de promocao 
+	codigo_promocao INTEGER NOT NULL, --Tipo de promocao 
 	desconto NUMBER(2) NOT NULL, --Em porcentual
 	restricao VARCHAR2(50) NOT NULL,
 	data_inicio DATE NOT NULL,

@@ -114,3 +114,18 @@ INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Ciclone','Familiar', 8, 8, 1.20);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Tapete Magico','Familiar', 15, 8, 1.20);
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Wave Swinger','Familiar', 20, 8, 1.20);
+
+--Povoamento Ingresso
+INSERT INTO Ingresso(codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 110.00); --Ingresso Normal
+INSERT INTO Ingresso(codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 150.00); --Ingresso Para Show de horrores
+INSERT INTO Ingresso(codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 200.00); -- Ingresso com direito a alimentação
+
+---Povoamento Promocao
+INSERT INTO Promocao(codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 10, 'Pagamento em Dinheiro ou PIX', to_date('02/03/2023', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));
+INSERT INTO Promocao(codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 40, 'Desconto Funcionário',  to_date('01/01/2023', 'dd/mm/yy'),  to_date('01/01/2024', 'dd/mm/yy'));
+INSERT INTO Promocao(codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 50, 'Desconto estudante, professor, idoso',  to_date('08/10/2015', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));
+INSERT INTO Promocao(codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 60, 'Desconto Aniversário',  to_date('08/10/2015', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));
+INSERT INTO Promocao(codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 70, 'Sem acesso aos brinquedos do parque',  to_date('13/07/2012', 'dd/mm/yy'),  to_date('31/12/2026', 'dd/mm/yy'));
+
+--Povoamento Bilheteria
+--INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora)
