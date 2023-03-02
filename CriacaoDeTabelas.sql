@@ -139,8 +139,8 @@ CREATE TABLE Joga (
 	nome_dependente VARCHAR2(25) NOT NULL, 
 	nome_brinquedo VARCHAR2(25) NOT NULL, 
 	CONSTRAINT joga_pkey PRIMARY KEY (cliente, nome_dependente, nome_brinquedo),  
-	CONSTRAINT joga_fkey2 FOREIGN KEY (cliente, nome_dependente) REFERENCES Dependente (cpf_cliente, nome), 
-	CONSTRAINT joga_fkey3 FOREIGN KEY (nome_brinquedo) REFERENCES Brinquedo (nome) 
+	CONSTRAINT joga_fkey1 FOREIGN KEY (cliente, nome_dependente) REFERENCES Dependente (cpf_cliente, nome), 
+	CONSTRAINT joga_fkey2 FOREIGN KEY (nome_brinquedo) REFERENCES Brinquedo (nome) 
 );
 
 -- BRINCA
@@ -152,9 +152,9 @@ CREATE TABLE Brinca (
 	CONSTRAINT brinca_fkey2 FOREIGN KEY (cliente) REFERENCES Cliente (cpf_cliente)
 );
 
-CREATE SEQUENCE codigo_sequencia INCREMENT BY 1 START WITH 1;
-CREATE SEQUENCE codigo_promocao INCREMENT BY 1 START WITH 1;
 -- INGRESSO
+CREATE SEQUENCE codigo_sequencia INCREMENT BY 1 START WITH 1;
+
 CREATE TABLE Ingresso (
 	codigo_sequencia INTEGER NOT NULL,
 	valor NUMBER(5,2) NOT NULL,
@@ -163,6 +163,8 @@ CREATE TABLE Ingresso (
 );
 
 -- PROMOÇÃO
+CREATE SEQUENCE codigo_promocao INCREMENT BY 1 START WITH 1;
+
 CREATE TABLE Promocao (
 	codigo_promocao INTEGER NOT NULL, --Tipo de promocao 
 	desconto NUMBER(2) NOT NULL, --Em porcentual

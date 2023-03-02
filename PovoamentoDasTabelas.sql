@@ -80,6 +80,28 @@ INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('101.101.101.01', '+5
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('202.202.202-02', '+55 98 99284 3640');
 INSERT INTO Telefone (cpf_pessoa, numero_telefone) VALUES ('303.303.303-03', '+55 85 97250 2315');
 
+--Povoando Cliente
+INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('999.999.999-99', 'Cartao de Credito');
+INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('888.888.888-88', 'Cartao de Debito');
+INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('777.777.777-77', 'Cartao de Debito');
+INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('666.666.666-66', 'Cartao de Credito');
+INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('555.555.555-55', 'Pix');
+INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('444.444.444-44', 'Pix');
+INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('333.333.333-33', 'Cartao de Debito');
+INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('222.222.222-22', 'Cartao de Credito');
+INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('111.111.111-11', 'Dinheiro');
+INSERT INTO Cliente (cpf_cliente, metodo_pagamento) VALUES ('100.100.100-10', 'Cartao de Debito');
+
+--Povoando Dependente
+INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('999.999.999-99', 'Pietir Pires', to_date('27/08/2010', 'dd/mm/yy'), 'F');
+INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('999.999.999-99', 'Raiane Pinheiro', to_date('07/03/2008', 'dd/mm/yy'), 'F');
+INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('999.999.999-99', 'Geneval Silvino', to_date('11/01/2012', 'dd/mm/yy'), 'M');
+INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('777.777.777-77', 'Telma Cordeiro', to_date('01/11/2012', 'dd/mm/yy'), 'F');
+INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('777.777.777-77', 'Rosane Vaz', to_date('18/12/2009', 'dd/mm/yy'), 'F');
+INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('444.444.444-44', 'Rone Gadelha', to_date('22/02/2010', 'dd/mm/yy'), 'M');
+INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('222.222.222-22', 'Guilherme Araujo', to_date('12/06/2009', 'dd/mm/yy'), 'M');
+INSERT INTO Dependente (cpf_cliente, nome, data_nascimento, sexo) VALUES ('100.100.100-10', '002.002.002-02', 'Nicollas Eger', to_date('14/09/2008', 'dd/mm/yy'), 'M');
+
 --Povoando Area
 INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Radical', 7);
 INSERT INTO Area (categoria, quantidade_de_brinquedos) VALUES ('Aquatico', 2);
