@@ -40,9 +40,6 @@ AND F.cpf = B.atendete;
 -- LIKE --
 -- Enunciado:
 
--- IS NULL ou IS NOT NULL --
--- Enunciado:
-
 -- INNER JOIN --
 -- Enunciado:
 
@@ -76,9 +73,6 @@ WHERE P.cpf = F.cpf_funcionario;
 -- SUBCONSULTA COM ALL --
 -- Enunciado:
 
--- ORDER BY --
--- Enunciado:
-
 -- GROUP BY --
 -- Enunciado: Retorne o sexo e a quantidade de funcionário e a média salarial, de acordo com o sexo, utilize a clausula GROUP BY
 SELECT P.sexo, COUNT(*) AS QNT_FUNCIONARIOS, AVG(F.salario) AS MEDIA_SALARIAL
@@ -89,8 +83,18 @@ GROUP BY sexo;
 -- HAVING --
 -- Enunciado:
 
--- UNION ou INTERSECT ou MINUS --
--- Enunciado:
+-- UNION ou INTERSECT ou MINUS  E ORDER BY--
+-- Enunciado: Retorne o nome, data de nascimento e a idade atual de todos os clientes e seus depedentes que frequentaram o parque
+SELECT *
+FROM (
+    SELECT P.nome, P.data_nascimento, TRUNC(MONTHS_BETWEEN(SYSDATE, P.data_nascimento)/12) AS IDADE 
+    FROM Pessoa P, Cliente C
+    WHERE P.cpf = C.cpf_cliente
+    UNION
+    SELECT D.nome, D.data_nascimento, TRUNC(MONTHS_BETWEEN(SYSDATE, D.data_nascimento)/12) AS IDADE 
+    FROM Dependente D
+)
+ORDER BY data_nascimento;
 
 -- CREATE VIEW --
 -- Enunciado:
