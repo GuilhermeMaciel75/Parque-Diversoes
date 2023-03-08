@@ -47,7 +47,10 @@ AND F.cpf = B.atendete;
 -- Enunciado:
 
 -- MIN --
--- Enunciado:
+-- Enunciado: Retorne a idade mínima e a altura mínima para poder andar em um brinquedo da área radical
+SELECT MIN(B.restricao_de_idade), MIN(B.restricao_de_altura)
+FROM Brinquedo B
+WHERE B.area = 'Radical';
 
 -- AVG --
 -- Enunciado: Retorne a média salarial dos funcionarios
@@ -71,7 +74,10 @@ WHERE P.cpf = F.cpf_funcionario;
 -- Enunciado:
 
 -- SUBCONSULTA COM ALL --
--- Enunciado:
+-- Enunciado: Retorne os brinquedos, e suas respectivas áreas, com a maior restrição de altura
+SELECT B.nome, B.area
+FROM Brinquedo B
+WHERE B.restricao_de_altura >= ALL(SELECT B.restricao_de_altura FROM Brinquedo B);
 
 -- GROUP BY --
 -- Enunciado: Retorne o sexo e a quantidade de funcionário e a média salarial, de acordo com o sexo, utilize a clausula GROUP BY
