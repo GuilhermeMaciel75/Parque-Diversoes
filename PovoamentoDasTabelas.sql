@@ -268,6 +268,12 @@ INSERT INTO Brinca (nome_brinquedo, cliente) VALUES ('Samba', '222.222.222-22');
 INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 110.00);
 INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 150.00); 
 INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 200.00); 
+INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 110.00);
+INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 150.00); 
+INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 200.00); 
+INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 110.00);
+INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 150.00); 
+INSERT INTO Ingresso (codigo_sequencia, valor) VALUES (codigo_sequencia.nextval, 200.00); 
 
 ---Povoamento Promocao
 INSERT INTO Promocao (codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 10, 'Pagamento em Dinheiro ou PIX', to_date('02/03/2023', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));

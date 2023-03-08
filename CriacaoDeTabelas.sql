@@ -179,7 +179,7 @@ CREATE TABLE Promocao (
 CREATE TABLE Bilheteria (
 	ingresso INTEGER NOT NULL,
 	cliente VARCHAR2(14) NOT NULL,
-	atendete VARCHAR2(14) NOT NULL,
+	atendente VARCHAR2(14) NOT NULL,
 	promocao NUMBER(3) NOT NULL,
 	data_e_hora TIMESTAMP NOT NULL,
 
@@ -187,6 +187,6 @@ CREATE TABLE Bilheteria (
 	CONSTRAINT bilheteria_pkey PRIMARY KEY (ingresso, data_e_hora),
 	CONSTRAINT bilheteria_fkey1 FOREIGN KEY (ingresso) REFERENCES Ingresso (codigo_sequencia),
 	CONSTRAINT bilheteria_fkey2 FOREIGN KEY (cliente) REFERENCES Cliente (cpf_cliente),
-	CONSTRAINT bilheteria_fkey3 FOREIGN KEY (atendete) REFERENCES Atendente (cpf_atendente),
+	CONSTRAINT bilheteria_fkey3 FOREIGN KEY (atendente) REFERENCES Atendente (cpf_atendente),
 	CONSTRAINT bilheteria_fkey4 FOREIGN KEY (promocao) REFERENCES Promocao (codigo_promocao)
 );
