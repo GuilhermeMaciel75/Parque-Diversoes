@@ -18,8 +18,12 @@
 -- DELETE --
 -- Enunciado:
 
--- SELECT-FROM-WHERE --
--- Enunciado:
+-- SELECT-FROM-WHERE E IS NULL ou IS NOT NULL--
+-- Enunciado: Retorne os nomes, CPF e o salário dos funcionários que possuem um supervisor, bem como o nome e o CPF do seu supervisor
+SELECT P.nome as Nome_FUNCIONARIO, F.cpf_funcionario, F.salario AS SALARIO_FUNCIONARIO, P2.nome AS NOME_SUPERVISOR, F.cpf_supervisor FROM Pessoa P, Funcionario F
+JOIN Pessoa P2 ON P2.cpf = F.cpf_supervisor
+WHERE P.cpf = F.cpf_funcionario
+AND F.cpf_supervisor IS NOT NULL;
 
 -- BETWEEN --
 -- Enunciado:
