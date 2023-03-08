@@ -284,14 +284,14 @@ INSERT INTO Promocao (codigo_promocao, desconto, restricao, data_inicio, data_te
 INSERT INTO Promocao (codigo_promocao, desconto, restricao, data_inicio, data_termino) VALUES (codigo_promocao.nextval, 0, 'Sem Promocçao',  to_date('08/10/2015', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy'));
 
 --Povoamento Bilheteria
-INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora) VALUES(1, '666.666.666-66', '300.300.300-30', 6, to_timestamp('03/03/2023 02:35:18', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora) VALUES(2, '222.222.222-22', '300.300.300-30', 1, to_timestamp('03/03/2023 04:05:44', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora) VALUES(3, '111.111.111-11', '300.300.300-30', 3, to_timestamp('03/03/2023 11:56:02', 'DD/MM/YYYY HH:MI:SS'));
+INSERT INTO Bilheteria(ingresso, cliente, atendente, promocao, data_e_hora) VALUES(1, '666.666.666-66', '300.300.300-30', 6, to_timestamp('03/03/2023 02:35:18', 'DD/MM/YYYY HH:MI:SS'));
+INSERT INTO Bilheteria(ingresso, cliente, atendente, promocao, data_e_hora) VALUES(2, '222.222.222-22', '300.300.300-30', 1, to_timestamp('03/03/2023 04:05:44', 'DD/MM/YYYY HH:MI:SS'));
+INSERT INTO Bilheteria(ingresso, cliente, atendente, promocao, data_e_hora) VALUES(3, '111.111.111-11', '300.300.300-30', 3, to_timestamp('03/03/2023 11:56:02', 'DD/MM/YYYY HH:MI:SS'));
 
-INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora) VALUES(1, '777.777.777-77', '400.400.400-40', 4, to_timestamp('08/10/2015 10:32:57', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora) VALUES(2, '333.333.333-33', '400.400.400-40', 5, to_timestamp('02/01/2023 08:15:33', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora) VALUES(3, '444.444.444-44', '400.400.400-40', 2, to_timestamp('13/07/2012 05:22:41', 'DD/MM/YYYY HH:MI:SS'));
+INSERT INTO Bilheteria(ingresso, cliente, atendente, promocao, data_e_hora) VALUES(1, '777.777.777-77', '400.400.400-40', 4, to_timestamp('08/10/2015 10:32:57', 'DD/MM/YYYY HH:MI:SS'));
+INSERT INTO Bilheteria(ingresso, cliente, atendente, promocao, data_e_hora) VALUES(2, '333.333.333-33', '400.400.400-40', 5, to_timestamp('02/01/2023 08:15:33', 'DD/MM/YYYY HH:MI:SS'));
+INSERT INTO Bilheteria(ingresso, cliente, atendente, promocao, data_e_hora) VALUES(3, '444.444.444-44', '400.400.400-40', 2, to_timestamp('13/07/2012 05:22:41', 'DD/MM/YYYY HH:MI:SS'));
 
-INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora) VALUES(1, '999.999.999-99', '200.200.200-20', 1, to_timestamp('22/12/2013 09:05:59', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora) VALUES(2, '555.555.555-55', '200.200.200-20', 2, to_timestamp('13/12/2019 04:44:29', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO Bilheteria(ingresso, cliente, atendete, promocao, data_e_hora) VALUES(3, '100.100.100-10', '200.200.200-20', 6, to_timestamp('13/12/2019 04:44:29', 'DD/MM/YYYY HH:MI:SS'));
+INSERT INTO Bilheteria(ingresso, cliente, atendente, promocao, data_e_hora) VALUES(1, '999.999.999-99', '200.200.200-20', 1, to_timestamp('22/12/2013 09:05:59', 'DD/MM/YYYY HH:MI:SS'));
+INSERT INTO Bilheteria(ingresso, cliente, atendente, promocao, data_e_hora) VALUES(2, '555.555.555-55', '200.200.200-20', 2, to_timestamp('13/12/2019 04:44:29', 'DD/MM/YYYY HH:MI:SS'));
+INSERT INTO Bilheteria(ingresso, cliente, atendente, promocao, data_e_hora) VALUES(3, '100.100.100-10', '200.200.200-20', 6, to_timestamp('13/12/2019 04:44:29', 'DD/MM/YYYY HH:MI:SS'));
