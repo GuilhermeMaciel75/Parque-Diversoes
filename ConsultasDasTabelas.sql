@@ -4,13 +4,17 @@
 
 
 -- ALTER TABLE --
--- Enunciado:
+-- Enunciado: Adicione uma nova coluna na tabela de funcionarios, onde nela será armazenada se o funcionario está de ferias
+ALTER TABLE Funcionario
+ADD esta_de_ferias NUMBER(1)
+DEFAULT 0 NOT NULL;
 
 -- CREATE INDEX --
 -- Enunciado:
 
 -- INSERT INTO --
--- Enunciado:
+-- Enunciado: Adicione ao sistema um novo brinquedo que que foi construido recentemente
+INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Tapete Mágico','Familiar', 20, 8, 1.20);
 
 -- UPDATE --
 -- Enunciado:
