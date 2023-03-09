@@ -311,7 +311,31 @@ END;
 -- Enunciado:
 
 -- WHILE LOOP --
--- Enunciado:
+-- Enunciado: Crie um procedimento que imprima a quantidade de ingressos vendidos por um determinado preço (o qual será recebido como parâmetro)
+CREATE OR REPLACE PROCEDURE ingressos_vendidos
+(preco_analisado IN Ingresso.valor%type) IS
+    valor Ingresso.valor%type;
+    i INTEGER;
+    n INTEGER;
+	cont INTEGER;
+
+BEGIN
+    i := 1;
+	cont := 0;
+
+    SELECT COUNT(*) INTO n FROM Ingresso;
+    WHILE i < n LOOP
+        SELECT I.valor INTO valor
+        FROM Ingresso I WHERE I.codigo_sequencia = i;
+        IF valor = preco_analisado THEN
+            cont := cont + 1;
+        END IF;
+        i := i + 1;
+    END LOOP;
+	dbms_output.put_line('A quantidade de ingressos com o valor ' || preco_analisado || ' é: ' || cont);
+END;
+
+EXECUTE ingressos_vendidos(200);
 
 -- FOR IN LOOP --
 -- Enunciado:
