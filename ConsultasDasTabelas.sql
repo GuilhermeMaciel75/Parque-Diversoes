@@ -215,7 +215,39 @@ WHERE F.salario < (SELECT AVG(salario) FROM Funcionario);
 -- Enunciado:
 
 -- USO DE ESTRUTURA DE DADOS DO TIPO TABLE --
--- Enunciado:
+-- Enunciado: Armazene em uma variável tabela, a quantidade de pessoas das seguintes tabelas (Pessoa. Cliente, Dependente, Funcionario, Operador, Atendente)
+DECLARE
+	TYPE Tabela_resultados IS RECORD(nome_categoria VARCHAR2(25), n_pessoas NUMBER);
+    
+    TYPE Tabela IS TABLE OF Tabela_resultados 
+	INDEX BY BINARY_INTEGER;
+
+	v_modelo Tabela;
+	i INTEGER:= 1;
+BEGIN
+
+    v_modelo(1).nome_categoria := 'Pessoa';
+	v_modelo(2).nome_categoria := 'Cliente';
+    v_modelo(3).nome_categoria := 'Dependente';
+    v_modelo(4).nome_categoria := 'Funcionario';
+    v_modelo(5).nome_categoria := 'Operador';
+    v_modelo(6).nome_categoria := 'Atendente';
+
+	SELECT COUNT(*) INTO  v_modelo(1).n_pessoas FROM Pessoa;
+	SELECT COUNT(*) INTO  v_modelo(2).n_pessoas FROM Cliente;	
+	SELECT COUNT(*) INTO  v_modelo(3).n_pessoas FROM Dependente;
+	SELECT COUNT(*) INTO  v_modelo(4).n_pessoas FROM Funcionario;
+	SELECT COUNT(*) INTO  v_modelo(5).n_pessoas FROM Operador;
+	SELECT COUNT(*) INTO  v_modelo(6).n_pessoas FROM Atendente;
+   
+
+   	WHILE i <= 6 LOOP
+		DBMS_OUTPUT.PUT_LINE('Classe: ' ||  v_modelo(i).nome_categoria);	
+		DBMS_OUTPUT.PUT_LINE('Número Pessoas: ' || v_modelo(i).n_pessoas);
+    	i:= i+1;
+    END LOOP;
+
+END;
 
 -- BLOCO ANÔNIMO --
 -- Enunciado:
