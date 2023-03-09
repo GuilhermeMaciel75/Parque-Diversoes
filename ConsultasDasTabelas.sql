@@ -223,16 +223,52 @@ WHERE F.salario < (SELECT AVG(salario) FROM Funcionario);
 -- CREATE PROCEDURE --
 -- Enunciado:
 
--- CREATE FUNCTION --
--- Enunciado:
+-- CREATE FUNCTION E CASE WHEN E EXCEPTION WHEN--
+-- Enunciado: Calcular o quanto o cliente irá pagar pelo ingresso
+
+CREATE OR REPLACE FUNCTION FINAL_TICKET_PAYMENT(
+    seq_ingresso IN Ingresso.codigo_sequencia%TYPE,
+    seq_pormocao IN Promocao.codigo_promocao%TYPE
+) RETURN NUMBER
+
+IS
+	v_ingresso Ingresso.valor%TYPE;
+	V_desconto_valor Promocao.desconto%TYPE;
+	V_desconto_restricao Promocao.restricao%TYPE;
+BEGIN
+    SELECT Promocao.desconto, Promocao.restricao INTO V_desconto_valor, V_desconto_restricao 
+    FROM Promocao
+	WHERE seq_pormocao = Promocao.codigo_promocao;
+
+    SELECT Ingresso.valor INTO v_ingresso 
+    FROM Ingresso
+	WHERE seq_ingresso = Ingresso.codigo_sequencia;
+
+	DBMS_OUTPUT.PUT_LINE('Restricao: ' || V_desconto_restricao);
+	return (1 - V_desconto_valor/100) * v_ingresso;
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.PUT_LINE('Restricao ou valor inválido');
+	return 0;
+END;
+
+
+DECLARE
+ valor NUMBER;
+
+BEGIN 
+	valor := FINAL_TICKET_PAYMENT(1, 1);
+	case valor
+    WHEN 0 THEN DBMS_OUTPUT.PUT_LINE('Valor a ser Pago: Não foi possível realizar esse cálculo');
+	ELSE DBMS_OUTPUT.PUT_LINE('Valor a ser Pago: '||valor);
+	END CASE;
+END;
 
 -- %TYPE --
 -- Enunciado:
 
 -- IF ELSIF --
--- Enunciado:
-
--- CASE WHEN --
 -- Enunciado:
 
 -- LOOP EXIT WHEN --
@@ -248,9 +284,6 @@ WHERE F.salario < (SELECT AVG(salario) FROM Funcionario);
 -- Enunciado:
 
 -- CURSOR (OPEN, FETCH e CLOSE) --
--- Enunciado:
-
--- EXCEPTION WHEN --
 -- Enunciado:
 
 -- USO DE PAR METROS (IN, OUT ou IN OUT) --
