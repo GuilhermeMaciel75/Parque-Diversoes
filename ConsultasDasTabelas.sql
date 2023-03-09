@@ -16,7 +16,12 @@
 -- Enunciado:
 
 -- DELETE --
--- Enunciado:
+-- Enunciado: Funcionário de CPF '101.101.101-01', foi desligado da empresa, logo, retire ele da função de operador do seu referido brinquedo e do quadro de funcionários
+DELETE FROM OPERADOR
+WHERE CPF_OPERADOR = '101.101.101-01';
+
+DELETE FROM funcionario
+WHERE CPF_funcionario = '101.101.101-01';
 
 -- SELECT-FROM-WHERE E IS NULL ou IS NOT NULL--
 -- Enunciado: Retorne os nomes, CPF e o salário dos funcionários que possuem um supervisor, bem como o nome e o CPF do seu supervisor
