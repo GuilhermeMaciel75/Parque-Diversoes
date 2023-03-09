@@ -60,10 +60,10 @@ WHERE B.area = 'Radical';
 -- AVG --
 -- Enunciado: Retorne a média salarial de cada setor, assim como a quantidade de pessoas que trabalham nele
 SELECT DISTINCT
-  (SELECT AVG(F.salario) FROM Funcionario F JOIN Atendente A ON F.cpf_funcionario = A.cpf_atendente) AS Media_Salarial_Atendentes,
-  (SELECT COUNT(cpf_atendente) FROM Atendente) AS Qnt_Atendentes,
-  (SELECT AVG(F.salario) FROM Funcionario F JOIN Operador O ON F.cpf_funcionario = O.cpf_operador) AS Media_Salarial_Operadores,
-  (SELECT COUNT(cpf_operador) FROM Operador) AS Qnt_Operadores
+  (SELECT AVG(F.salario) FROM Funcionario F JOIN Atendente A ON F.cpf_funcionario = A.cpf_atendente) AS MEDIA_SALARIAL_ATENDENTES,
+  (SELECT COUNT(cpf_atendente) FROM Atendente) AS QNT_ATENDENTES,
+  (SELECT AVG(F.salario) FROM Funcionario F JOIN Operador O ON F.cpf_funcionario = O.cpf_operador) AS MEDIA_SALARIAL_OPERADORES,
+  (SELECT COUNT(cpf_operador) FROM Operador) AS QNT_OPERADORES
 FROM Funcionario;
 
 -- COUNT --
@@ -117,7 +117,10 @@ ORDER BY data_nascimento;
 -- CREATE VIEW --
 -- Enunciado: Considerando que haverá um recálculo no salário dos funcionários com o salário menor que a média, mostre quanto teria que ser adicionado ao salário antigo para que atinga a média, o salário antigo e o salário novo, assim cmo a média salarial
 CREATE VIEW Reajuste_Salarial AS 
-SELECT P.nome, (SELECT AVG(salario) FROM Funcionario) AS Media_Salarial, F.salario AS Salario_Antigo, ((SELECT AVG(salario) FROM Funcionario) - F.salario) AS Valor_Reajuste, (F.salario + ((SELECT AVG(salario) FROM Funcionario) - F.salario)) AS Novo_Salario
+SELECT P.nome, 
+(SELECT AVG(salario) FROM Funcionario) AS MEDIA_SALARIAL, F.salario AS SALARIO_ANTIGO, 
+((SELECT AVG(salario) FROM Funcionario) - F.salario) AS VALOR_REAJUSTE, 
+(F.salario + ((SELECT AVG(salario) FROM Funcionario) - F.salario)) AS NOVO_SALARIO
 FROM Pessoa P
 JOIN Funcionario F ON P.cpf = F.cpf_funcionario
 WHERE F.salario < (SELECT AVG(salario) FROM Funcionario);
