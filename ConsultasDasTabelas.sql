@@ -10,14 +10,19 @@ ADD esta_de_ferias NUMBER(1)
 DEFAULT 0 NOT NULL;
 
 -- CREATE INDEX --
--- Enunciado:
+-- Enunciado: Criando um indice
+CREATE INDEX indice
+ON Pessoa (cpf);
 
 -- INSERT INTO --
 -- Enunciado: Adicione ao sistema um novo brinquedo que que foi construido recentemente
 INSERT INTO Brinquedo (nome, area, capacidade, restricao_de_idade, restricao_de_altura) VALUES ('Tapete Mágico','Familiar', 20, 8, 1.20);
 
 -- UPDATE --
--- Enunciado:
+-- Enunciado: Muda o nome de Karen Cabral para Josuina Maria na tabela Pessoa
+UPDATE Pessoa P
+SET nome = 'Josuina Maria'
+WHERE nome = 'Karen Cabral';
 
 -- DELETE --
 -- Enunciado: Funcionário de CPF '101.101.101-01', foi desligado da empresa, logo, retire ele da função de operador do seu referido brinquedo e do quadro de funcionários
@@ -35,7 +40,11 @@ WHERE P.cpf = F.cpf_funcionario
 AND F.cpf_supervisor IS NOT NULL;
 
 -- BETWEEN --
--- Enunciado:
+-- Enunciado: Seleciona o valor dos Ingressos cujos codigos estão entre 1 e 2
+SELECT I.valor
+FROM Ingresso I
+WHERE I.codigo_sequencia BETWEEN 1 AND 2;
+
 
 -- IN --
 -- Enunciado: Retorne nome, cpf e o método de pagamento dos clientes que efetuaram compra em pix ou dinheiro, assim como todas as informações sobre a compra mas em vez de retornar o CPF do atendente retorne apenas seu nome (use a clausula usando IN)
@@ -87,7 +96,10 @@ WHERE P.desconto IN (SELECT MAX(desconto)
 					 FROM Promocao);
                      
 -- MAX --
--- Enunciado:
+-- Enunciado: Seleciona o codigo dos ingressos de maior valor, ou seja, os mais caros
+SELECT I.codigo_sequencia
+FROM Ingresso I
+WHERE I.valor = (SELECT MAX(valor) FROM Ingresso);
 
 -- MIN --
 -- Enunciado: Retorne a idade mínima e a altura mínima para poder andar em um brinquedo da área radical
@@ -127,7 +139,14 @@ FROM Funcionario F
 LEFT OUTER JOIN Funcionario S ON F.cpf_supervisor = S.cpf_funcionario;
 
 -- SUBCONSULTA COM OPERADOR RELACIONAL --
--- Enunciado:
+-- Enunciado: Seleciona o codigo dos ingressos cujos valores forem iguais ou maior do que 150
+SELECT I.codigo_sequencia
+FROM Ingresso I
+WHERE I.valor = ANY(
+    SELECT Ing.valor
+    FROM Ingresso Ing
+    WHERE Ing.valor >=150
+    );
 
 -- SUBCONSULTA COM IN --
 -- Retornar o nome dos funcionários que moram em Olinda ou Jaboatão dos Guararapes
@@ -253,80 +272,68 @@ BEGIN
 
 END;
 
--- BLOCO ANÔNIMO --
--- Enunciado:
+-- IF ELSIF --
+-- Enunciado: Diz qual o papel do funcionário do parque com base em seu salário
+CREATE OR REPLACE PROCEDURE InserirFuncao (
+    p_cpf Pessoa.cpf%TYPE,
+    p_salario Funcionario.salario%TYPE,
+    p_banca Atendente.banca%TYPE,
+    p_brinquedo Operador.brinquedo%TYPE
+) IS
+    BEGIN
+        IF p_salario = 5000.00 OR p_salario = 4700.00 THEN
+        	INSERT INTO Atendente (cpf_atendente, banca) VALUES (p_cpf, p_banca);
+    	ELSIF p_salario = 6000.00 OR p_salario = 5500.00 THEN
+            INSERT INTO Operador (cpf_operador, brinquedo) VALUES (p_cpf, p_brinquedo);
+    	ELSE 
+            DBMS_OUTPUT.PUT_LINE('Não é possível identificar a função desse funcionário com base no seu salário');
+    	END IF;
+END InserirFuncao;
+/
 
 -- CREATE PROCEDURE --
--- Enunciado: Crie um procedimento que dado uma data de inicio e fim, retorne a quantidade de ingressos vendidos nesse periodo de tempo
-CREATE OR REPLACE PROCEDURE TOTAL_INGRESSOS_VENDIDOS (
-    data_inicial IN Bilheteria.data_e_hora%TYPE,
-    data_final IN Bilheteria.data_e_hora%TYPE,
-    TOTAL_VENDIDOS OUT INT
-)
-IS
-BEGIN
-    SELECT COUNT(*) INTO TOTAL_VENDIDOS
-    FROM Bilheteria
-    WHERE data_e_hora BETWEEN data_inicial AND data_final;
-END;
+-- Enunciado: Criando um procedimento que insere um funcionario nas tabelas Pessoa, Funcionario e Endereco
+CREATE OR REPLACE PROCEDURE InsereFuncionario (
+    c_cpf Pessoa.cpf%TYPE,
+    c_nome Pessoa.nome%TYPE,
+    c_dataNascimento Pessoa.data_nascimento%TYPE,
+    c_sexo Pessoa.sexo%TYPE,
+    c_salario Funcionario.salario%TYPE,
+    c_supervisor_cpf Funcionario.cpf_supervisor%TYPE,
+    c_cep Endereco.cep%TYPE,
+    c_numero Endereco.numero%TYPE,
+    c_rua Endereco.rua%TYPE,
+    c_bairro Endereco.bairro%TYPE,
+    c_cidade Endereco.cidade%TYPE,
+    c_estado Endereco.estado%TYPE,
+    c_banca Atendente.banca%TYPE,
+    c_brinquedo Operador.brinquedo%TYPE
+) IS
+	BEGIN
+    	INSERT INTO Pessoa (cpf, nome, data_nascimento, sexo) VALUES (c_cpf, c_nome, c_dataNascimento, c_sexo);
+		INSERT INTO Funcionario (cpf_funcionario, salario, cpf_supervisor) VALUES (c_cpf, c_salario, c_supervisor_cpf);
+		INSERT INTO Endereco (cpf_pessoa, cep, numero, rua, bairro, cidade, estado) VALUES (c_cpf, c_cep, c_numero, c_rua, c_bairro, c_cidade, c_estado);
+        InserirFuncao(c_cpf, c_salario, c_banca, c_brinquedo);
+END InsereFuncionario;
 /
 
+-- BLOCO ANÔNIMO --
+-- Enunciado: Mostra que o procedimento InsereFuncionario está também chamando a tabela Atendente quando necessario
 DECLARE
-    data_inicio TIMESTAMP := TO_TIMESTAMP('01/01/2012 01:00:00' , 'DD/MM/YYYY HH:MI:SS');
-    data_final TIMESTAMP := TO_TIMESTAMP('12/12/2023 01:00:00', 'DD/MM/YYYY HH:MI:SS');
-    total_vendidos INT;
+    teste_cpf Atendente.cpf_Atendente%TYPE;
 BEGIN
-    TOTAL_INGRESSOS_VENDIDOS(data_inicio, data_final, total_vendidos);
-    DBMS_OUTPUT.PUT_LINE('Total de ingressos vendidos: ' || total_vendidos);
+    InsereFuncionario('760.403.486-15', 'Kauan Barros', to_date('03/04/1997', 'dd/mm/yy'), 'M', 5000.00, '200.200.200-20', '50980-410', 860, 'Rua Diogo de Vasconcelos', 'Várzea', 'Recife', 'PE', 'Banca D', NULL);
+
+	SELECT A.cpf_atendente
+    INTO teste_cpf
+    FROM Atendente A
+    WHERE A.cpf_atendente = '760.403.486-15';
+
+	DBMS_OUTPUT.PUT_LINE(teste_cpf);
 END;
 /
-
-
--- CREATE FUNCTION E CASE WHEN E EXCEPTION WHEN--
--- Enunciado: Calcular o quanto o cliente irá pagar pelo ingresso
-CREATE OR REPLACE FUNCTION FINAL_TICKET_PAYMENT(
-    seq_ingresso IN Ingresso.codigo_sequencia%TYPE,
-    seq_pormocao IN Promocao.codigo_promocao%TYPE
-) RETURN NUMBER
-
-IS
-	v_ingresso Ingresso.valor%TYPE;
-	V_desconto_valor Promocao.desconto%TYPE;
-	V_desconto_restricao Promocao.restricao%TYPE;
-BEGIN
-    SELECT Promocao.desconto, Promocao.restricao INTO V_desconto_valor, V_desconto_restricao 
-    FROM Promocao
-	WHERE seq_pormocao = Promocao.codigo_promocao;
-
-    SELECT Ingresso.valor INTO v_ingresso 
-    FROM Ingresso
-	WHERE seq_ingresso = Ingresso.codigo_sequencia;
-
-	DBMS_OUTPUT.PUT_LINE('Restricao: ' || V_desconto_restricao);
-	return (1 - V_desconto_valor/100) * v_ingresso;
-
-EXCEPTION
-    WHEN NO_DATA_FOUND THEN
-    DBMS_OUTPUT.PUT_LINE('Restricao ou valor inválido');
-	return 0;
-END;
-
-
-DECLARE
- valor NUMBER;
-
-BEGIN 
-	valor := FINAL_TICKET_PAYMENT(1, 1);
-	case valor
-    WHEN 0 THEN DBMS_OUTPUT.PUT_LINE('Valor a ser Pago: Não foi possível realizar esse cálculo');
-	ELSE DBMS_OUTPUT.PUT_LINE('Valor a ser Pago: '||valor);
-	END CASE;
-END;
 
 -- %TYPE --
--- Enunciado:
-
--- IF ELSIF --
 -- Enunciado:
 
 -- LOOP EXIT WHEN --
