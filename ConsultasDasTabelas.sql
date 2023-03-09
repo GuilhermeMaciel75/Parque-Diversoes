@@ -257,11 +257,33 @@ END;
 -- Enunciado:
 
 -- CREATE PROCEDURE --
--- Enunciado:
+-- Enunciado: Crie um procedimento que dado uma data de inicio e fim, retorne a quantidade de ingressos vendidos nesse periodo de tempo
+CREATE OR REPLACE PROCEDURE TOTAL_INGRESSOS_VENDIDOS (
+    data_inicial IN Bilheteria.data_e_hora%TYPE,
+    data_final IN Bilheteria.data_e_hora%TYPE,
+    TOTAL_VENDIDOS OUT INT
+)
+IS
+BEGIN
+    SELECT COUNT(*) INTO TOTAL_VENDIDOS
+    FROM Bilheteria
+    WHERE data_e_hora BETWEEN data_inicial AND data_final;
+END;
+/
+
+DECLARE
+    data_inicio TIMESTAMP := TO_TIMESTAMP('01/01/2012 01:00:00' , 'DD/MM/YYYY HH:MI:SS');
+    data_final TIMESTAMP := TO_TIMESTAMP('12/12/2023 01:00:00', 'DD/MM/YYYY HH:MI:SS');
+    total_vendidos INT;
+BEGIN
+    TOTAL_INGRESSOS_VENDIDOS(data_inicio, data_final, total_vendidos);
+    DBMS_OUTPUT.PUT_LINE('Total de ingressos vendidos: ' || total_vendidos);
+END;
+/
+
 
 -- CREATE FUNCTION E CASE WHEN E EXCEPTION WHEN--
 -- Enunciado: Calcular o quanto o cliente irá pagar pelo ingresso
-
 CREATE OR REPLACE FUNCTION FINAL_TICKET_PAYMENT(
     seq_ingresso IN Ingresso.codigo_sequencia%TYPE,
     seq_pormocao IN Promocao.codigo_promocao%TYPE
