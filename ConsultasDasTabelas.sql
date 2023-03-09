@@ -87,7 +87,11 @@ WHERE P.cpf = F.cpf_funcionario
 GROUP BY sexo;
 
 -- HAVING --
--- Enunciado:
+-- Enunciado: Retorne os salários que tenham mais de uma ocorrência no sistem, com a respectiva quantidade de vezes em que eles aparecem
+SELECT F.salario, COUNT(F.salario)
+FROM Funcionario F
+GROUP BY F.salario
+HAVING COUNT(F.salario) > 1;
 
 -- UNION ou INTERSECT ou MINUS  E ORDER BY--
 -- Enunciado: Retorne o nome, data de nascimento e a idade atual de todos os clientes e seus depedentes que frequentaram o parque
