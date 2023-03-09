@@ -117,7 +117,10 @@ FROM Telefone T, Pessoa P
 WHERE P.cpf = T.cpf_pessoa AND P.nome = 'Júlia Pereira';
 
 -- LEFT ou RIGHT ou FULL OUTER JOIN --
--- Enunciado:
+-- Enunciado: Retorne cpf dos funcionários e o cpf dos seus supervisores, mesmo os funcionários não tenham supervisor devem estar presentes na tabela, se houver supervisor sem supervisado, ele não aparecera na tabela.
+SELECT F.cpf_funcionario AS CPF_FUNCIONARIO, S.cpf_funcionario as CPF_SUPERVISOR
+FROM Funcionario F
+LEFT OUTER JOIN Funcionario S ON F.cpf_supervisor = S.cpf_funcionario;
 
 -- SUBCONSULTA COM OPERADOR RELACIONAL --
 -- Enunciado:
