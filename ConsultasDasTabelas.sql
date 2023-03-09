@@ -43,11 +43,45 @@ AND C.metodo_pagamento IN ('Pix', 'Dinheiro')
 AND F.cpf = B.atendete;
 
 -- LIKE --
--- Enunciado:
+-- Retornar os clientes que pagaram com cartão, independente se foi no débito ou no crédito
+SELECT P.nome, C.metodo_pagamento
+FROM Pessoa P, Cliente C
+WHERE P.cpf = C.cpf_cliente 
+AND C.metodo_pagamento LIKE 'Cart%'
+ORDER BY P.nome;
+
+-- Brinquedos que começam com 'S' e suas respectivas áreas
+SELECT B.nome, B.area
+FROM Brinquedo B
+WHERE B.nome LIKE 'S%'
+ORDER BY B.nome;
 
 -- INNER JOIN --
--- Enunciado:
+-- Retornar o nome dos operadores que trabalham com brinquedos radicais 
+SELECT P.nome, B.nome as Brinquedo
+FROM Pessoa P
+INNER JOIN Operador O ON P.cpf = O.cpf_operador
+INNER JOIN Brinquedo B ON O.brinquedo = B.nome
+WHERE B.area = 'Radical'
+ORDER BY P.nome;
 
+-- Retornar o Nome e Salario do Funcionário responsável por operar o 'Trem Fantasma'
+SELECT P.nome, F.salario
+FROM Pessoa P 
+INNER JOIN Funcionario F ON P.cpf = F.cpf_funcionario
+INNER JOIN Operador O ON O.cpf_operador = F.cpf_funcionario
+INNER JOIN Brinquedo B ON O.brinquedo = B.nome
+WHERE B.nome = 'Trem Fantasma';
+
+-- Retornar dados do Cliente que comprou seu ingresso com o maior desconto
+SELECT P.nome as NOME, P.cpf AS CPF, C.metodo_pagamento AS MÉTODO, P.desconto AS DESCONTO_em_R$
+FROM Pessoa P
+INNER JOIN Cliente C ON P.cpf = C.cpf_cliente
+INNER JOIN Bilheteria B ON C.cpf_cliente = B.cliente
+INNER JOIN Promocao P ON B.promocao = P.codigo_promocao
+WHERE P.desconto IN (SELECT MAX(desconto)
+					 FROM Promocao);
+                     
 -- MAX --
 -- Enunciado:
 
@@ -67,7 +101,20 @@ SELECT DISTINCT
 FROM Funcionario;
 
 -- COUNT --
--- Enunciado:
+-- Quantidade de vezes que um determinado brinquedo foi usado por um cliente
+SELECT B.nome_brinquedo, COUNT(*)
+FROM Brinca B
+GROUP BY B.nome_brinquedo;
+
+-- Quantidade de vezes que um determinado brinquedo foi usado por um dependente 
+SELECT J.nome_brinquedo, COUNT(*)
+FROM Joga J
+GROUP BY J.nome_brinquedo;
+
+-- Quantidade de números de telefone da cliente 'Júlia Pereira'
+SELECT P.nome, COUNT (*) as QTD_de_telefones
+FROM Telefone T, Pessoa P
+WHERE P.cpf = T.cpf_pessoa AND P.nome = 'Júlia Pereira';
 
 -- LEFT ou RIGHT ou FULL OUTER JOIN --
 -- Enunciado:
@@ -76,10 +123,40 @@ FROM Funcionario;
 -- Enunciado:
 
 -- SUBCONSULTA COM IN --
--- Enunciado:
+-- Retornar o nome dos funcionários que moram em Olinda ou Jaboatão dos Guararapes
+SELECT P.nome
+FROM Pessoa P
+WHERE P.cpf IN (SELECT F.cpf_funcionario
+				FROM Funcionario F
+				INNER JOIN Endereco E ON F.cpf_funcionario = E.cpf_pessoa
+				AND E.cidade IN ('Olinda','Jaboatão dos Guararapes'));
+
+-- Retornar o nome dos clientes que foram no Samba ou no Thunder
+SELECT P.nome
+FROM Pessoa P
+WHERE P.cpf IN (SELECT C.cpf_cliente
+				FROM Cliente C
+				INNER JOIN Brinca B ON C.cpf_cliente = B.cliente
+				AND B.nome_brinquedo IN ('Samba', 'Thunder'));
 
 -- SUBCONSULTA COM ANY --
--- Enunciado:
+-- Funcionários que recebem mais que 5500 reais
+SELECT P.nome
+FROM Pessoa P, Funcionario F
+WHERE P.cpf = F.cpf_funcionario
+AND F.salario > ANY (SELECT F.salario
+						FROM Funcionario F
+    					WHERE F.salario >= 5500);
+
+
+-- Brinquedos com capacidade maior que 20
+SELECT B.nome, B.capacidade
+FROM Brinquedo B
+WHERE B.capacidade >= ANY (SELECT B.capacidade
+						  FROM Brinquedo B
+						  WHERE B.capacidade > 20);
+
+
 
 -- SUBCONSULTA COM ALL --
 -- Enunciado: Retorne os brinquedos, e suas respectivas áreas, com a maior restrição de altura
