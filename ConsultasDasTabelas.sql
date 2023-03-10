@@ -379,47 +379,59 @@ END;
 -- LOOP EXIT WHEN --
 -- Enunciado:
 
--- WHILE LOOP --
--- Enunciado: Crie um procedimento que imprima a quantidade de ingressos vendidos por um determinado preço (o qual será recebido como parâmetro)
-CREATE OR REPLACE PROCEDURE ingressos_vendidos
-(preco_analisado IN Ingresso.valor%type) IS
-    valor Ingresso.valor%type;
-    i INTEGER;
-    n INTEGER;
-	cont INTEGER;
-
-BEGIN
-    i := 1;
-	cont := 0;
-
-    SELECT COUNT(*) INTO n FROM Ingresso;
-    WHILE i < n LOOP
-        SELECT I.valor INTO valor
-        FROM Ingresso I WHERE I.codigo_sequencia = i;
-        IF valor = preco_analisado THEN
-            cont := cont + 1;
-        END IF;
-        i := i + 1;
-    END LOOP;
-	dbms_output.put_line('A quantidade de ingressos com o valor ' || preco_analisado || ' é: ' || cont);
-END;
-
-EXECUTE ingressos_vendidos(200);
-
 -- FOR IN LOOP --
 -- Enunciado:
 
 -- CURSOR (OPEN, FETCH e CLOSE) --
 -- Enunciado:
 
--- USO DE PAR METROS (IN, OUT ou IN OUT) --
--- Enunciado:
+-- CREATE OR REPLACE PACKAGE, CREATE OR REPLACE PACKAGE BODY, WHILE LOOP e USO DE PAR METROS (IN, OUT ou IN OUT)--
+-- Enunciado: Crie um pacote que possua dois procedimentos, um deles para analisar e imprimir se o cliente tem altura suficiente para andar em um determinado brinquedo e outro para analisar e imprimir o numero de ingressos vendidos por um determinado valor
+CREATE OR REPLACE PACKAGE pkg_analise IS
+	PROCEDURE analisa_altura(altura_cliente IN Brinquedo.restricao_de_altura%type, nome_brinquedo IN Brinquedo.nome%type);
+	PROCEDURE ingressos_vendidos(preco_analisado IN Ingresso.valor%type);
+END pkg_analise;
 
--- CREATE OR REPLACE PACKAGE --
--- Enunciado:
+CREATE OR REPLACE PACKAGE BODY pkg_analise IS
+    -- Implementação do procedimento analisa_altura, onde imprime se o cliente tem altura o suficiente para andar em um determinado brinquedo
+	PROCEDURE analisa_altura(altura_cliente IN Brinquedo.restricao_de_altura%type, nome_brinquedo IN Brinquedo.nome%type) IS
+    		altura_brinquedo Brinquedo.restricao_de_altura%type;
+    BEGIN
+		SELECT B.restricao_de_altura INTO altura_brinquedo
+        FROM Brinquedo B WHERE B.nome = nome_brinquedo;
 
--- CREATE OR REPLACE PACKAGE BODY --
--- Enunciado:
+		IF altura_cliente >= altura_brinquedo THEN
+            dbms_output.put_line('O Cliente pode andar no brinquedo: ' || nome_brinquedo);
+		ELSE 
+            dbms_output.put_line('O Cliente não tem altura o suficiente para andar no brinquedo: ' || nome_brinquedo);
+		END IF;
+    END;
+	
+	-- Implementação do procedimento ingressos_vendidos, onde imprime a quantidade de ingressos vendidos por um determinado preço 
+	PROCEDURE ingressos_vendidos(preco_analisado IN Ingresso.valor%type) IS
+        valor Ingresso.valor%type;
+        i INTEGER;
+        n INTEGER;
+    	cont INTEGER;
+    BEGIN
+        i := 1;
+    	cont := 0;
+    
+        SELECT COUNT(*) INTO n FROM Ingresso;
+        WHILE i < n LOOP
+            SELECT I.valor INTO valor
+            FROM Ingresso I WHERE I.codigo_sequencia = i;
+            IF valor = preco_analisado THEN
+                cont := cont + 1;
+            END IF;
+            i := i + 1;
+        END LOOP;
+    	dbms_output.put_line('A quantidade de ingressos com o valor ' || preco_analisado || ' é: ' || cont);
+    END;
+END pkg_analise;
+
+EXECUTE pkg_analise.analisa_altura(1.30, 'Super Tornado'); -- Usado para testar a procedure analisa_altura
+EXECUTE pkg_analise.ingressos_vendidos(200); -- Usado para testar a procedure ingressos_vendidos
 
 -- CREATE OR REPLACE TRIGGER (COMANDO) --
 -- Enunciado:
