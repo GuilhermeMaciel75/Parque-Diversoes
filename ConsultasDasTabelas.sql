@@ -433,7 +433,26 @@ END;
 */
 
 -- FOR IN LOOP --
--- Enunciado:
+-- Enunciado: Listar as restrições das promoções e os valores de desconto
+CREATE OR REPLACE PROCEDURE Promos IS
+    i BINARY_INTEGER;
+    q BINARY_INTEGER;
+    restricao Promocao.restricao%TYPE;
+    desconto Promocao.desconto%TYPE;
+
+    BEGIN 
+        i := 1;
+        SELECT COUNT(*) INTO q FROM Promocao;
+        FOR i IN 1..q LOOP
+            SELECT P.restricao, P.desconto INTO restricao, desconto
+            FROM Promocao P
+            WHERE P.codigo_promocao = i;
+            IF desconto ~= 0 THEN
+                dbms_output.put_line('Promocao: '|| restricao ||' // '|| 'Valor do desconto: '||desconto);
+            END IF;
+        END LOOP;
+END Promos;
+/
 
 -- LOOP EXIT WHEN + CURSOR (OPEN, FETCH, END) --
 -- Enunciado: Mostrar a quantidade de brinquedos por categoria
