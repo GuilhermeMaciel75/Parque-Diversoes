@@ -364,6 +364,20 @@ BEGIN
 END;
 /
 
+-- %ROWTYPE --
+-- De acordo com o nome do brinquedo, mostra a que área ele pertence
+SET SERVEROUTPUT ON
+DECLARE
+brinquedo_record brinquedo%rowtype;
+vBrinquedo_nome brinquedo.nome%type :='Thunder';
+BEGIN
+SELECT * INTO brinquedo_record
+FROM brinquedo
+WHERE nome=vBrinquedo_nome;
+DBMS_OUTPUT.PUT_LINE('Categoria do brinquedo: '|| brinquedo_record.area);
+END;
+/
+
 -- CREATE FUNCTION E CASE WHEN E EXCEPTION WHEN--
 -- Enunciado: Calcular o quanto o cliente irá pagar pelo ingresso
 
@@ -418,14 +432,62 @@ END;
 /
 */
 
--- LOOP EXIT WHEN --
--- Enunciado:
-
 -- FOR IN LOOP --
 -- Enunciado:
 
--- CURSOR (OPEN, FETCH e CLOSE) --
--- Enunciado:
+-- LOOP EXIT WHEN + CURSOR (OPEN, FETCH, END) --
+-- Enunciado: Mostrar a quantidade de brinquedos por categoria
+DECLARE     
+    count_Radical BINARY_INTEGER;
+    count_Aquatico BINARY_INTEGER;
+    count_Terror BINARY_INTEGER;
+    count_Infantil BINARY_INTEGER;
+    count_Familiar BINARY_INTEGER;
+
+    x BINARY_INTEGER;
+    y BINARY_INTEGER;
+
+    brinquedos Brinquedo.area%TYPE;
+
+CURSOR b_brinks IS
+    SELECT B.area
+    FROM Brinquedo B; 
+
+BEGIN
+    OPEN b_brinks;
+    x := 0;
+    count_Radical := 0;
+    count_Aquatico := 0;
+    count_Terror := 0;
+    count_Infantil := 0;
+    count_Familiar := 0;
+    SELECT COUNT(*) INTO y FROM Brinquedo;
+    WHILE x < y LOOP 
+        FETCH b_brinks INTO brinquedos;
+        EXIT WHEN b_brinks%NOTFOUND;
+        CASE brinquedos
+            WHEN 'Radical' THEN
+                count_Radical := count_Radical + 1;
+            WHEN 'Aquatico' THEN
+                count_Aquatico := count_Aquatico + 1;
+            WHEN 'Aterrorizante' THEN
+                count_Terror := count_Terror + 1;
+            WHEN 'Infantil' THEN
+                count_Infantil := count_Infantil + 1;
+            WHEN 'Familiar' THEN
+                count_Familiar := count_Familiar + 1;
+        END CASE;
+        x := x + 1;
+    END LOOP;
+
+    CLOSE b_brinks;
+    dbms_output.put_line('Quantidade de Brinquedos Radicais: ' || count_Radical);
+    dbms_output.put_line('Quantidade de Brinquedos Aquáticos: ' || count_Aquatico);
+    dbms_output.put_line('Quantidade de Brinquedos de Terror: ' || count_Terror);
+    dbms_output.put_line('Quantidade de Brinquedos Infantis: ' || count_Infantil);
+    dbms_output.put_line('Quantidade de Brinquedos Familiares: ' || count_Familiar);
+END;
+/
 
 -- CREATE OR REPLACE PACKAGE, CREATE OR REPLACE PACKAGE BODY, WHILE LOOP e USO DE PAR METROS (IN, OUT ou IN OUT)--
 -- Enunciado: Crie um pacote que possua dois procedimentos, um deles para analisar e imprimir se o cliente tem altura suficiente para andar em um determinado brinquedo e outro para analisar e imprimir o numero de ingressos vendidos por um determinado valor
