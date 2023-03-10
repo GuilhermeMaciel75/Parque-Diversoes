@@ -574,7 +574,7 @@ BEGIN
 
 EXCEPTION
     WHEN final THEN
-    RAISE_application_error(-27009, 'Ingressos só podem ser removidos no último dia do ano');
+    RAISE_application_error(-20090, 'Ingressos só podem ser removidos no último dia do ano');
 END DeletarIngresso;
 /
 
