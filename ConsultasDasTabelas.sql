@@ -576,6 +576,7 @@ EXCEPTION
     WHEN final THEN
     RAISE_application_error(-27009, 'Ingressos só podem ser removidos no último dia do ano');
 END DeletarIngresso;
+/
 
 -- CREATE OR REPLACE TRIGGER (LINHA) --
 -- Enunciado: Crie um gatilho que quando remove alguém de Funcionário, se ele for um Operador, remova de todas as ocorrencias dele
