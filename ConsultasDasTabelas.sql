@@ -565,9 +565,9 @@ DECLARE
 	final EXCEPTION;
 BEGIN
     dia := TO_CHAR(sysdate, 'MM');
-	IF dia = '12' THEN
+	IF dia <> '12' THEN
         dia := TO_CHAR(sysdate, 'DD');
-		IF dia = '31' THEN
+		IF dia <> '31' THEN
             RAISE final;
 		END IF;
 	END IF;
