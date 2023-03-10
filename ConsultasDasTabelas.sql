@@ -235,7 +235,23 @@ WHERE F.salario < (SELECT AVG(salario) FROM Funcionario);
 
 
 -- USO DE RECORD --
--- Enunciado:
+-- Enunciado: Criar um registro para Pessoa e insira a nova pessoa na tabela
+DECLARE
+   pessoa1 pessoa%ROWTYPE;
+BEGIN
+   pessoa1.cpf := '123.456.789-10';
+   pessoa1.nome := 'Erlan Lira';
+   pessoa1.data_nascimento := TO_DATE('01-01-1980', 'DD-MM-YYYY');
+   pessoa1.sexo := 'M';
+   
+   INSERT INTO Pessoa VALUES pessoa1;
+   
+	DBMS_OUTPUT.PUT_LINE('CPF: ' || pessoa1.cpf);
+  	DBMS_OUTPUT.PUT_LINE('Nome: ' || pessoa1.nome);
+	DBMS_OUTPUT.PUT_LINE('Data de Nascimento: ' || pessoa1.data_nascimento);
+  	DBMS_OUTPUT.PUT_LINE('Sexo: ' || pessoa1.sexo);
+END;
+/
 
 -- USO DE ESTRUTURA DE DADOS DO TIPO TABLE --
 -- Enunciado: Armazene em uma variável tabela, a quantidade de pessoas das seguintes tabelas (Pessoa. Cliente, Dependente, Funcionario, Operador, Atendente)
@@ -333,8 +349,30 @@ BEGIN
 END;
 /
 
--- %TYPE --
--- Enunciado:
+-- SELECT … INTO e %TYPE--
+-- Enunciado: Crie um procedimento que dado uma data de inicio e fim, retorne a quantidade de ingressos vendidos nesse periodo de tempo
+CREATE OR REPLACE PROCEDURE TOTAL_INGRESSOS_VENDIDOS (
+    data_inicial IN Bilheteria.data_e_hora%TYPE,
+    data_final IN Bilheteria.data_e_hora%TYPE,
+    TOTAL_VENDIDOS OUT INT
+)
+IS
+BEGIN
+    SELECT COUNT(*) INTO TOTAL_VENDIDOS
+    FROM Bilheteria
+    WHERE data_e_hora BETWEEN data_inicial AND data_final;
+END;
+/
+
+DECLARE
+    data_inicio TIMESTAMP := TO_TIMESTAMP('01/01/2012 01:00:00' , 'DD/MM/YYYY HH:MI:SS');
+    data_final TIMESTAMP := TO_TIMESTAMP('12/12/2023 01:00:00', 'DD/MM/YYYY HH:MI:SS');
+    total_vendidos INT;
+BEGIN
+    TOTAL_INGRESSOS_VENDIDOS(data_inicio, data_final, total_vendidos);
+    DBMS_OUTPUT.PUT_LINE('Total de ingressos vendidos: ' || total_vendidos);
+END;
+/
 
 -- LOOP EXIT WHEN --
 -- Enunciado:
@@ -367,9 +405,6 @@ END;
 EXECUTE ingressos_vendidos(200);
 
 -- FOR IN LOOP --
--- Enunciado:
-
--- SELECT … INTO --
 -- Enunciado:
 
 -- CURSOR (OPEN, FETCH e CLOSE) --
