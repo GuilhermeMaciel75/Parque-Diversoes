@@ -364,6 +364,7 @@ BEGIN
 END;
 /
 
+/*TESTE DO TOTAL_INGRESSOS_VENDIDOS
 DECLARE
     data_inicio TIMESTAMP := TO_TIMESTAMP('01/01/2012 01:00:00' , 'DD/MM/YYYY HH:MI:SS');
     data_final TIMESTAMP := TO_TIMESTAMP('12/12/2023 01:00:00', 'DD/MM/YYYY HH:MI:SS');
@@ -373,6 +374,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Total de ingressos vendidos: ' || total_vendidos);
 END;
 /
+*/
 
 -- LOOP EXIT WHEN --
 -- Enunciado:
@@ -423,4 +425,37 @@ EXECUTE ingressos_vendidos(200);
 -- Enunciado:
 
 -- CREATE OR REPLACE TRIGGER (LINHA) --
--- Enunciado:
+-- Enunciado: Crie um gatilho que quando remove alguém de Funcionário, se ele for um Operador, remova de todas as ocorrencias dele
+CREATE OR REPLACE TRIGGER REMOVER_OPERADOR
+BEFORE DELETE ON Funcionario
+FOR EACH ROW
+DECLARE
+	f_cpf Funcionario.cpf_funcionario%TYPE;
+BEGIN
+    f_cpf := :OLD.cpf_funcionario;
+
+	DELETE FROM Endereco
+        WHERE Endereco.cpf_pessoa = f_cpf;
+
+	DELETE FROM Telefone
+        WHERE Telefone.cpf_pessoa = f_cpf;
+
+	DELETE FROM Operador
+        WHERE Operador.cpf_operador = f_cpf;
+END;
+/
+
+/*TESTE DO TRIGGER DE LINHA:
+
+SELECT *
+FROM Operador O, Funcionario F
+WHERE F.cpf_funcionario = '500.500.500-50'
+AND O.cpf_operador = '500.500.500-50';
+
+DELETE FROM Funcionario
+WHERE cpf_funcionario = '500.500.500-50';
+
+SELECT *
+FROM Operador O, Funcionario F
+WHERE F.cpf_funcionario = '500.500.500-50'
+AND O.cpf_operador = '500.500.500-50';*/
