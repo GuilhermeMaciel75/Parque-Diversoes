@@ -557,7 +557,25 @@ EXECUTE pkg_analise.analisa_altura(1.30, 'Super Tornado'); -- Usado para testar 
 EXECUTE pkg_analise.ingressos_vendidos(200); -- Usado para testar a procedure ingressos_vendidos
 
 -- CREATE OR REPLACE TRIGGER (COMANDO) --
--- Enunciado:
+-- Enunciado: Trigger que impede de remover ingressos caso não seja o último dia do ano
+CREATE OR REPLACE TRIGGER DeletarIngresso
+BEFORE DELETE ON Ingresso
+DECLARE
+    dia varchar2(2);
+	final EXCEPTION;
+BEGIN
+    dia := TO_CHAR(sysdate, 'MM');
+	IF dia = '12' THEN
+        dia := TO_CHAR(sysdate, 'DD');
+		IF dia = '31' THEN
+            RAISE final;
+		END IF;
+	END IF;
+
+EXCEPTION
+    WHEN final THEN
+    RAISE_application_error(-27009, 'Ingressos só podem ser removidos no último dia do ano');
+END DeletarIngresso;
 
 -- CREATE OR REPLACE TRIGGER (LINHA) --
 -- Enunciado: Crie um gatilho que quando remove alguém de Funcionário, se ele for um Operador, remova de todas as ocorrencias dele
