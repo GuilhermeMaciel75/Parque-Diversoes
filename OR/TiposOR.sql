@@ -82,7 +82,7 @@ CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
 	data_nascimento DATE,
 	endereco tp_endereco,
 	telefone tp_telefone
-);
+) NOT FINAL NOT INSTANTIABLE;
 
 -- Cliente 
 CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
@@ -105,12 +105,41 @@ CREATE OR REPLACE TYPE tp_operador UNDER tp_funcionario (
 	
 );
 -- Atendente
--- Área 
--- Brinquedo
--- Joga 
--- Brinca 
--- Ingresso 
--- Promoção 
--- Bilheteria 
+CREATE OR REPLACE TYPE tp_atendente UNDER tp_funcionario (
 
-/*
+);
+
+-- Área
+CREATE OR REPLACE TYPE tp_area AS OBJECT (
+
+); 
+
+-- Brinquedo
+CREATE OR REPLACE TYPE tp_brinquedo AS OBJECT (
+
+);
+
+-- Joga 
+CREATE OR REPLACE TYPE tp_joga AS OBJECT (
+
+);
+
+-- Brinca
+CREATE OR REPLACE TYPE tp_brinca AS OBJECT (
+
+);
+
+-- Ingresso 
+CREATE OR REPLACE TYPE tp_ingresso AS OBJECT (
+
+);
+
+-- Promoção 
+CREATE OR REPLACE TYPE tp_promocao AS OBJECT (
+
+);
+
+-- Bilheteria 
+CREATE OR REPLACE TYPE tp_bilheterira AS OBJECT (
+
+);
