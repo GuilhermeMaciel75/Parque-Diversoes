@@ -91,14 +91,14 @@ CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
 
 -- Dependente
 CREATE OR REPLACE TYPE tp_dependente AS OBJECT (
-	cpf_cliente RE
+	
 );
 
 -- Funcionário 
 CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
 	salario NUMBER(6,2),
 	cpf_supervisor REF tp_pessoa
-); NOT FINAL NOT INSTANTIABLE
+) NOT FINAL NOT INSTANTIABLE;
 
 -- Operador 
 CREATE OR REPLACE TYPE tp_operador UNDER tp_funcionario (
@@ -114,15 +114,3 @@ CREATE OR REPLACE TYPE tp_operador UNDER tp_funcionario (
 -- Bilheteria 
 
 /*
-
-CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
-	id NUMBER,
-	nome VARCHAR2(25),
-	endereco tp_endereco
-);
-
-CREATE TEBLE tb_pessoa OF tp_pwsssoa (
-	id PRIMARY KEY
-);
-
-INSERT INTO tb_pessoa VALUES tp_pessoa ();
