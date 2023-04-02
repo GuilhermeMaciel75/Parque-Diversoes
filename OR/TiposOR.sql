@@ -38,7 +38,7 @@ CREATE OR REPLACE TYPE tp_endereco AS OBJECT (
 	rua VARCHAR2(30),
 	bairro VARCHAR2(25),
 	cidade VARCHAR2(25),
-	estado CHAR(2)
+	estado CHAR(2),
 	CONSTRUCTOR FUNCTION tp_endereco (SELF IN OUT NOCOPY tp_endereco, 
 		cep VARCHAR2, 
 		numero VARCHAR2, 
@@ -59,12 +59,12 @@ CREATE OR REPLACE TYPE BODY tp_endereco AS
 		estado CHAR) RETURN SELF AS RESULT IS 
 		BEGIN 
 
-			SELF.cep = cep;
-			SELF.numero = numero;
-			SELF.rua = rua;
-			SELF.bairro = bairro;
-			SELF.cidade = cidade;
-			SELF.estado = estado;
+			SELF.cep := cep;
+			SELF.numero := numero;
+			SELF.rua := rua;
+			SELF.bairro := bairro;
+			SELF.cidade := cidade;
+			SELF.estado := estado;
 
 		END;
 
@@ -88,8 +88,19 @@ CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
 	data_nascimento DATE,
 	sexo CHAR(1),
 	endereco tp_endereco,
-	telefone tp_array_fones
+	telefone tp_array_fones,
+
+    ORDER MEMBER FUNCTION comparaIdade(dt tp_pessoa) RETURN INTEGER
 ) NOT FINAL NOT INSTANTIABLE;
+/
+
+CREATE OR REPLACE TYPE BODY tp_pessoa AS
+	ORDER MEMBER FUNCTION comparaIdade(dt tp_pessoa) RETURN INTEGER
+	BEGIN
+		RETURN SELF.data_nascimento - dt.data_nascimento;
+	END comparaIdade;
+
+END;
 /
 
 -- Cliente 
@@ -99,19 +110,30 @@ CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
 /
 
 -- Dependente
-CREATE OR REPLACE TYPE tp_dependente AS OBJECT ( -- (Pode ser uma Nested Table(?))
-	cpf_cliente REF tp_cliente, --*(?)*
+-- (Pode ser uma Nested Table(?))
+CREATE OR REPLACE TYPE tp_dependente AS OBJECT ( 
+	cpf_cliente REF tp_cliente, 
 	nome VARCHAR2(25),
 	data_nascimento DATE,
-	sexo CHAR(1),
+	sexo CHAR(1)
 );
 /
 -- Funcionário 
 CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
-	salario NUMBER(6,2),
+	salario NUMBER(6,2)
 ) NOT FINAL NOT INSTANTIABLE;
 /
 
+/*
+CREATE OR REPLACE TYPE BODY tp_funcionario AS
+	ORDER MEMBER FUNCTION comparaSalario(s, tp_funcionario) RETURN INTEGER
+	BEGIN
+		RETURN SELF.salario - X.salario;
+	END comparaSalario;
+
+END;
+/
+*/
 -- Área
 CREATE OR REPLACE TYPE tp_area AS OBJECT (
 	categoria VARCHAR2(25),
