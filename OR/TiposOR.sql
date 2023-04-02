@@ -42,11 +42,12 @@ CREATE OR REPLACE TYPE tp_endereco AS OBJECT (
 	CONSTRUCTOR FUNCTION tp_endereco (SELF IN OUT NOCOPY tp_endereco, 
 		cep VARCHAR2, 
 		numero VARCHAR2, 
-		rua VARCHAR2, 
+		rua VARCHAR2,
 		bairro VARCHAR2, 
-		cidade VARCHAR2, 
+		cidade VARCHAR2,
 		estado CHAR) RETURN SELF AS RESULT
-	);
+);
+/
 
 CREATE OR REPLACE TYPE BODY tp_endereco AS 
 	CONSTRUCTOR FUNCTION tp_endereco (SELF IN OUT NOCOPY tp_endereco, 
@@ -68,78 +69,116 @@ CREATE OR REPLACE TYPE BODY tp_endereco AS
 		END;
 
 END;
-
+/
 
 -- Telefone 
 CREATE OR REPLACE TYPE tp_telefone AS OBJECT (
 	numero_telefone VARCHAR2(20)
 );
+/
+
+-- VARRAY DE TELEFONE
+CREATE OR REPLACE TYPE tp_array_fones AS VARRAY(5) OF tp_telefone;
+/
 
 -- Pessoa
 CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
 	cpf VARCHAR2(14),
 	nome VARCHAR2(25),
 	data_nascimento DATE,
+	sexo CHAR(1),
 	endereco tp_endereco,
-	telefone tp_telefone
+	telefone tp_array_fones
 ) NOT FINAL NOT INSTANTIABLE;
+/
 
 -- Cliente 
 CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
 	metodo_pagamento VARCHAR2(20)
 );
+/
 
 -- Dependente
-CREATE OR REPLACE TYPE tp_dependente AS OBJECT (
-	
+CREATE OR REPLACE TYPE tp_dependente AS OBJECT ( -- (Pode ser uma Nested Table(?))
+	cpf_cliente REF tp_cliente, --*(?)*
+	nome VARCHAR2(25),
+	data_nascimento DATE,
+	sexo CHAR(1),
 );
-
+/
 -- Funcionário 
 CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
 	salario NUMBER(6,2),
-	cpf_supervisor REF tp_pessoa
 ) NOT FINAL NOT INSTANTIABLE;
-
--- Operador 
-CREATE OR REPLACE TYPE tp_operador UNDER tp_funcionario (
-	
-);
--- Atendente
-CREATE OR REPLACE TYPE tp_atendente UNDER tp_funcionario (
-
-);
+/
 
 -- Área
 CREATE OR REPLACE TYPE tp_area AS OBJECT (
-
-); 
+	categoria VARCHAR2(25),
+	quantidade_de_brinquedos NUMBER(2)
+);
+/ 
 
 -- Brinquedo
 CREATE OR REPLACE TYPE tp_brinquedo AS OBJECT (
-
+	nome VARCHAR2(25),
+    area REF tp_area,
+    capacidade NUMBER(2),
+    restricao_de_idade NUMBER(2),
+    restricao_de_altura NUMBER(3,2) --Altura em metros
 );
+/
+
+-- Operador 
+CREATE OR REPLACE TYPE tp_operador UNDER tp_funcionario (
+	brinquedo REF tp_brinquedo
+);
+/
+
+-- Atendente
+CREATE OR REPLACE TYPE tp_atendente UNDER tp_funcionario (
+	banca VARCHAR2(25)
+);
+/
 
 -- Joga 
 CREATE OR REPLACE TYPE tp_joga AS OBJECT (
-
+	cliente REF tp_cliente, 
+	nome_dependente REF tp_dependente, -- ********* VAI SER ASSIM? ********* 
+	nome_brinquedo REF tp_brinquedo
 );
+/
 
 -- Brinca
 CREATE OR REPLACE TYPE tp_brinca AS OBJECT (
-
+	nome_brinquedo REF tp_brinquedo,
+	cliente REF tp_cliente
 );
+/
 
 -- Ingresso 
 CREATE OR REPLACE TYPE tp_ingresso AS OBJECT (
-
+	codigo_ingresso INTEGER,
+	valor NUMBER(5,2)
 );
+/
 
 -- Promoção 
 CREATE OR REPLACE TYPE tp_promocao AS OBJECT (
-
+	codigo_promocao INTEGER, --Tipo de promocao 
+	desconto NUMBER(2), --Em porcentual
+	restricao VARCHAR2(50),
+	data_inicio DATE,
+	data_termino DATE
 );
+/
 
 -- Bilheteria 
-CREATE OR REPLACE TYPE tp_bilheterira AS OBJECT (
-
+CREATE OR REPLACE TYPE tp_bilheteria AS OBJECT (
+	ingresso REF tp_ingresso,
+	cliente REF tp_cliente,
+	atendente REF tp_atendente,
+	promocao REF tp_promocao,
+	data_e_hora TIMESTAMP
 );
+/
