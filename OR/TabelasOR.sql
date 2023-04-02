@@ -37,10 +37,10 @@ CREATE TABLE tb_area OF tp_area (
 -- Brinquedo
 CREATE TABLE tb_brinquedo OF tp_brinquedo (
 	nome PRIMARY KEY,
-    area WITH ROWID REFERENCES tb_area,
-    capacidade NOT NULL,
-    restricao_de_idade NOT NULL,
-    restricao_de_altura NOT NULL
+    	area WITH ROWID REFERENCES tb_area,
+    	capacidade NOT NULL,
+    	restricao_de_idade NOT NULL,
+    	restricao_de_altura NOT NULL
 );
 /
 
@@ -81,7 +81,7 @@ CREATE TABLE tb_ingresso OF tp_ingresso (
 /
 
 -- Promoção 
-CREATE OR REPLACE TYPE tp_promocao AS OBJECT (
+CREATE TABLE tb_promocao OF tp_promocao (
 	codigo_promocao PRIMARY KEY, 
 	desconto NOT NULL,
 	restricao NOT NULL,
