@@ -88,19 +88,9 @@ CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
 	data_nascimento DATE,
 	sexo CHAR(1),
 	endereco tp_endereco,
-	telefone tp_array_fones,
+	telefone tp_array_fones
 
-    ORDER MEMBER FUNCTION comparaIdade(dt tp_pessoa) RETURN INTEGER
 ) NOT FINAL NOT INSTANTIABLE;
-/
-
-CREATE OR REPLACE TYPE BODY tp_pessoa AS
-	ORDER MEMBER FUNCTION comparaIdade(dt tp_pessoa) RETURN INTEGER
-	BEGIN
-		RETURN SELF.data_nascimento - dt.data_nascimento;
-	END comparaIdade;
-
-END;
 /
 
 -- Cliente 
@@ -124,16 +114,6 @@ CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
 ) NOT FINAL NOT INSTANTIABLE;
 /
 
-/*
-CREATE OR REPLACE TYPE BODY tp_funcionario AS
-	ORDER MEMBER FUNCTION comparaSalario(s, tp_funcionario) RETURN INTEGER
-	BEGIN
-		RETURN SELF.salario - X.salario;
-	END comparaSalario;
-
-END;
-/
-*/
 -- Área
 CREATE OR REPLACE TYPE tp_area AS OBJECT (
 	categoria VARCHAR2(25),
