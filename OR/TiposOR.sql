@@ -137,11 +137,12 @@ CREATE OR REPLACE TYPE BODY tp_funcionario AS
 		DBMS_OUTPUT.PUT_LINE('Nome: ' || nome);
 		DBMS_OUTPUT.PUT_LINE('Data de Nascimento: ' || data_nascimento);
 		DBMS_OUTPUT.PUT_LINE('Sexo: ' || sexo);
-		DBMS_OUTPUT.PUT_LINE('Sexo: ' || salario);
+		DBMS_OUTPUT.PUT_LINE('Salario: ' || salario);
 
 	END;
 END;
 /
+
 -- Área
 CREATE OR REPLACE TYPE tp_area AS OBJECT (
 	categoria VARCHAR2(25),
