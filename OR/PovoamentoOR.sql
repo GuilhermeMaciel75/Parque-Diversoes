@@ -31,8 +31,25 @@ INSERT INTO tb_area VALUES (tp_area('Aterrorizante', 2));
 INSERT INTO tb_area VALUES (tp_area('Infantil', 3));
 INSERT INTO tb_area VALUES (tp_area('Familiar', 3));
 
--- Brinquedo
+-- Brinquedo OK
 INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Super Tornado', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Radical'), 30, 12, 1.35));
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Thunder', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Radical'), 35, 12, 1.30));
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Over Loop', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Radical'), 25, 12, 1.35));
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Samba', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Radical'), 25, 12, 1.30));
+
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Splash', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Aquatico'), 5, 6, 1.00));
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Tchibum', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Aquatico'), 5, 10, 1.25));
+
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Mansao do Terror', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Aterrorizante'), 10, 12, 1.30));
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Trem Fantasma', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Aterrorizante'), 2, 8, 1.20));
+
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Carrocel', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Infantil'), 15, 3, 0.85));
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Trampolim', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Infantil'), 15, 3, 0.85));
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Trenzinho', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Infantil'), 25, 3, 0.85));
+
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Roda Gigante', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Familiar'), 40, 6, 1.00));
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Barca', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Familiar'), 30, 6, 1.00));
+INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Ciclone', (SELECT REF (A) FROM tb_area A WHERE A.categoria = 'Familiar'), 8, 8, 1.20));
 
 -- Operador 
 INSERT INTO tb_operador VALUES (tp_operador('500.500.500-50', 'Juma Marruá', to_date('23/06/1990', 'dd/mm/yy'), 'F',
