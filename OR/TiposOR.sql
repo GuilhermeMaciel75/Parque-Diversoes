@@ -156,8 +156,18 @@ CREATE OR REPLACE TYPE tp_brinquedo AS OBJECT (
     area REF tp_area,
     capacidade NUMBER(2),
     restricao_de_idade NUMBER(2),
-    restricao_de_altura NUMBER(3,2) --Altura em metros
+    restricao_de_altura NUMBER(3,2), --Altura em metros
+
+	ORDER MEMBER FUNCTION comparaQtd(B tp_brinquedo) RETURN INTEGER
 );
+/
+
+CREATE OR REPLACE TYPE BODY tp_brinquedo AS 
+	ORDER MEMBER FUNCTION comparaQtd(B tp_brinquedo) RETURN INTEGER IS
+	BEGIN
+		RETURN SELF.capacidade - B.capacidade;
+	END;
+END;
 /
 
 -- Operador 
