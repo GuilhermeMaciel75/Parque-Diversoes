@@ -125,7 +125,8 @@ CREATE OR REPLACE TYPE tp_dependente AS OBJECT (
 -- Funcionário 
 CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
 	salario NUMBER(6,2),
-	OVERRIDING MEMBER PROCEDURE exibirInformacoes(SELF tp_funcionario)
+	OVERRIDING MEMBER PROCEDURE exibirInformacoes(SELF tp_funcionario),
+	MEMBER FUNCTION salarioBonusNatal RETURN NUMBER
 ) NOT FINAL NOT INSTANTIABLE;
 /
 
@@ -139,6 +140,11 @@ CREATE OR REPLACE TYPE BODY tp_funcionario AS
 		DBMS_OUTPUT.PUT_LINE('Sexo: ' || sexo);
 		DBMS_OUTPUT.PUT_LINE('Salario: ' || salario);
 
+	END;
+
+	MEMBER FUNCTION salarioBonusNatal RETURN NUMBER IS --Todos os funcionários recebem um bónus de 20% no salário no natal
+	BEGIN
+		RETURN Salario * 1.2;
 	END;
 END;
 /
