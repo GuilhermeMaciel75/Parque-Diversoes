@@ -162,13 +162,15 @@ CREATE OR REPLACE TYPE tp_brinquedo AS OBJECT (
 
 -- Operador 
 CREATE OR REPLACE TYPE tp_operador UNDER tp_funcionario (
-	brinquedo REF tp_brinquedo
+	brinquedo REF tp_brinquedo,
+	cpf_supervisor REF tp_operador
 );
 /
 
 -- Atendente
 CREATE OR REPLACE TYPE tp_atendente UNDER tp_funcionario (
-	banca VARCHAR2(25)
+	banca VARCHAR2(25),
+	cpf_supervisor REF tp_atendente
 );
 /
 
