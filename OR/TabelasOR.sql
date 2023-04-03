@@ -17,7 +17,7 @@ CREATE TABLE <nome da tabela> OF <nome do tipo> (
 -- Cliente 
 CREATE TABLE tb_cliente OF tp_cliente (
 	cpf PRIMARY KEY,
-	metodos_pagamento NOT NULL
+	metodo_pagamento NOT NULL
 );
 /
 
@@ -37,10 +37,10 @@ CREATE TABLE tb_area OF tp_area (
 -- Brinquedo
 CREATE TABLE tb_brinquedo OF tp_brinquedo (
 	nome PRIMARY KEY,
-    	area WITH ROWID REFERENCES tb_area,
-    	capacidade NOT NULL,
-    	restricao_de_idade NOT NULL,
-    	restricao_de_altura NOT NULL
+    area WITH ROWID REFERENCES tb_area,
+    capacidade NOT NULL,
+    restricao_de_idade NOT NULL,
+    restricao_de_altura NOT NULL
 );
 /
 
