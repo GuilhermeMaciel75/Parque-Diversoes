@@ -70,20 +70,22 @@ INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Ciclone', (SELECT REF (A) FROM tb
 -- Operador 
 INSERT INTO tb_operador VALUES (tp_operador('500.500.500-50', 'Juma Marruá', to_date('23/06/1990', 'dd/mm/yy'), 'F',
 	tp_endereco('50050-050', 121, 'Avenida Central', 'Afogados', 'Recife', 'PE'),
-	tp_arrray_fones(tp_telefone('+55 22 99184 4150'))));
+	tp_arrray_fones(tp_telefone('+55 22 99184 4150')), NULL));
 
 -- Atendente OK
 INSERT INTO tb_atendente VALUES (tp_atendente('200.200.200-20', 'Leonardo Lopes', to_date('29/02/1996', 'dd/mm/yy'), 'M',
 	tp_endereco('20020-020', 99, 'Rua do Futuro', 'Iputinga', 'Recife', 'PE'),
-	tp_arrray_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 'Banca A'));
+	tp_arrray_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 'Banca A', NULL));
 
 INSERT INTO tb_atendente VALUES (tp_atendente('300.300.300-30', 'Leônidas Silva', to_date('09/03/1980', 'dd/mm/yy'), 'M',
 	tp_endereco('30030-030', 300, 'Estrada da Batalha', 'Prazeres', 'Jaboatão dos Guararapes', 'PE'),
-	tp_arrray_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 'Banca B'));
+	tp_arrray_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 'Banca B', 
+	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '200.200.200-20')));
 
 INSERT INTO tb_atendente VALUES (tp_atendente('400.400.400-40', 'Helena Souza', to_date('02/10/1988', 'dd/mm/yy'), 'F',
 	tp_endereco('40040-040', 40, 'Avenida Caxangá', 'Cordeiro', 'Recife', 'PE'),
-	tp_arrray_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 'Banca C'));
+	tp_arrray_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 'Banca C', 
+	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '200.200.200-20')));
 
 -- Joga ****** Ver como vai ser Dependentes...
 INSERT INTO tb_joga VALUES (tp_joga((SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '999.999.999-99'), 
