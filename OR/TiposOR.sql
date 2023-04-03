@@ -88,11 +88,24 @@ CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
 	data_nascimento DATE,
 	sexo CHAR(1),
 	endereco tp_endereco,
-	telefone tp_array_fones
+	telefone tp_array_fones,
+
+	FINAL MEMBER PROCEDURE exibirInformacoes(SELF tp_pessoa)
 
 ) NOT FINAL NOT INSTANTIABLE;
 /
 
+CREATE OR REPLACE TYPE BODY tp_pessoa AS 
+	FINAL MEMBER PROCEDURE exibirInformacoes(SELF tp_pessoa) IS
+	BEGIN
+		DBMS_OUTPUT.PUT_LINE('Informações de uma Pessoa');
+		DBMS_OUTPUT.PUT_LINE('CPF: ' || cpf);
+		DBMS_OUTPUT.PUT_LINE('Nome: ' || nome);
+		DBMS_OUTPUT.PUT_LINE('Data de Nascimento: ' || data_nascimento);
+		DBMS_OUTPUT.PUT_LINE('Sexo: ' || sexo);
+
+	END;
+END;
 -- Cliente 
 CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
 	metodo_pagamento VARCHAR2(20)
@@ -111,8 +124,22 @@ CREATE OR REPLACE TYPE tp_dependente AS OBJECT (
 -- Funcionário 
 CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
 	salario NUMBER(6,2)
+	OVERRIDING MEMBER PROCEDURE exibirInformacoes(SELF tp_funcionario)
 ) NOT FINAL NOT INSTANTIABLE;
 /
+
+CREATE OR REPLACE TYPE BODY tp_pessoa AS 
+	FINAL MEMBER PROCEDURE exibirInformacoes(SELF tp_pessoa) IS
+	BEGIN
+		DBMS_OUTPUT.PUT_LINE('Informações de uma Pessoa');
+		DBMS_OUTPUT.PUT_LINE('CPF: ' || cpf);
+		DBMS_OUTPUT.PUT_LINE('Nome: ' || nome);
+		DBMS_OUTPUT.PUT_LINE('Data de Nascimento: ' || data_nascimento);
+		DBMS_OUTPUT.PUT_LINE('Sexo: ' || sexo);
+		DBMS_OUTPUT.PUT_LINE('Sexo: ' || salario);
+
+	END;
+END;
 
 -- Área
 CREATE OR REPLACE TYPE tp_area AS OBJECT (
