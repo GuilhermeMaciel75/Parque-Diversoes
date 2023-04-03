@@ -90,13 +90,13 @@ CREATE OR REPLACE TYPE tp_pessoa AS OBJECT (
 	endereco tp_endereco,
 	telefone tp_array_fones,
 
-	FINAL MEMBER PROCEDURE exibirInformacoes(SELF tp_pessoa)
+	MEMBER PROCEDURE exibirInformacoes(SELF tp_pessoa)
 
 ) NOT FINAL NOT INSTANTIABLE;
 /
 
 CREATE OR REPLACE TYPE BODY tp_pessoa AS 
-	FINAL MEMBER PROCEDURE exibirInformacoes(SELF tp_pessoa) IS
+	MEMBER PROCEDURE exibirInformacoes(SELF tp_pessoa) IS
 	BEGIN
 		DBMS_OUTPUT.PUT_LINE('Informações de uma Pessoa');
 		DBMS_OUTPUT.PUT_LINE('CPF: ' || cpf);
@@ -106,6 +106,7 @@ CREATE OR REPLACE TYPE BODY tp_pessoa AS
 
 	END;
 END;
+/
 -- Cliente 
 CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
 	metodo_pagamento VARCHAR2(20)
@@ -123,13 +124,13 @@ CREATE OR REPLACE TYPE tp_dependente AS OBJECT (
 /
 -- Funcionário 
 CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
-	salario NUMBER(6,2)
+	salario NUMBER(6,2),
 	OVERRIDING MEMBER PROCEDURE exibirInformacoes(SELF tp_funcionario)
 ) NOT FINAL NOT INSTANTIABLE;
 /
 
-CREATE OR REPLACE TYPE BODY tp_pessoa AS 
-	FINAL MEMBER PROCEDURE exibirInformacoes(SELF tp_pessoa) IS
+CREATE OR REPLACE TYPE BODY tp_funcionario AS 
+	OVERRIDING MEMBER PROCEDURE exibirInformacoes(SELF tp_funcionario) IS
 	BEGIN
 		DBMS_OUTPUT.PUT_LINE('Informações de uma Pessoa');
 		DBMS_OUTPUT.PUT_LINE('CPF: ' || cpf);
@@ -140,7 +141,7 @@ CREATE OR REPLACE TYPE BODY tp_pessoa AS
 
 	END;
 END;
-
+/
 -- Área
 CREATE OR REPLACE TYPE tp_area AS OBJECT (
 	categoria VARCHAR2(25),
