@@ -16,7 +16,23 @@ INSERT INTO <tb_nome_da_tabela> VALUES <tp_nome_do_tipo> (<nomes dos atributos>)
 -- Cliente 
 INSERT INTO tb_cliente VALUES (tp_cliente('999.999.999-99', 'Jubileu Amorim', to_date('14/03/1992', 'dd/mm/yy'), 'M', 
 	tp_endereco('99999-999', 128, 'Rua do Espinheiro', 'Espinheiro', 'Recife', 'PE'), 
-	tp_arrray_fones(tp_telefone('+55 81 99902 2762'), tp_telefone('+55 81 98417 1256'), tp_telefone('+55 81 98284 5843'))));
+	tp_arrray_fones(tp_telefone('+55 81 99902 2762'), tp_telefone('+55 81 98417 1256'), tp_telefone('+55 81 98284 5843')),
+	'Cartao de Credito', 
+	tp_nt_dependentes(tp_dependente('Pietir Pires', to_date('27/08/2010', 'dd/mm/yy'), 'F'), 
+					  tp_dependente('Raiane Pinheiro', to_date('07/03/2008', 'dd/mm/yy'), 'F'),
+					  tp_dependente('Geneval Silvino', to_date('11/01/2012', 'dd/mm/yy'), 'M'))));
+
+INSERT INTO tb_cliente VALUES (tp_cliente('888.888.888-88', 'Adalto Joaquim', to_date('20/09/1988', 'dd/mm/yy'), 'M', 
+	tp_endereco('88888-888', 13, 'Estrada dos Viajantes', 'Goiabeiras', 'Vitória', 'ES'), 
+	tp_arrray_fones(tp_telefone('+55 27 98431 0816'), tp_telefone('+55 27 98741 2487')),
+	'Cartao de Debito', NULL));
+
+INSERT INTO tb_cliente VALUES (tp_cliente('777.777.777-77', 'Maria Joaquina', to_date('27/04/2000', 'dd/mm/yy'), 'F', 
+	tp_endereco('77777-777', 55, 'Avenida 1º de Maio', 'Ponta Verde', 'Maceió', 'AL'), 
+	tp_arrray_fones(tp_telefone('+55 82 99768 8281')),
+	'Cartao de Debito', 
+	tp_nt_dependentes(tp_dependente('Telma Cordeiro', to_date('01/11/2012', 'dd/mm/yy'), 'F'), 
+					  tp_dependente('Rosane Vaz', to_date('18/12/2009', 'dd/mm/yy'), 'F'))));
 
 -- Dependente
 -- Nested Table (?)
