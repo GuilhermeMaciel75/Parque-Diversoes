@@ -34,6 +34,44 @@ INSERT INTO tb_cliente VALUES (tp_cliente('777.777.777-77', 'Maria Joaquina', to
 	tp_nt_dependentes(tp_dependente('Telma Cordeiro', to_date('01/11/2012', 'dd/mm/yy'), 'F'), 
 					  tp_dependente('Rosane Vaz', to_date('18/12/2009', 'dd/mm/yy'), 'F'))));
 
+INSERT INTO tb_cliente VALUES (tp_cliente('666.666.666-66', 'Ana Vitória', to_date('15/11/1997', 'dd/mm/yy'), 'F', 
+	tp_endereco('66666-666', 23, 'Rua Açai', 'Castanheira', 'Boa Vista', 'RO'), 
+	tp_arrray_fones(tp_telefone('+55 69 96765 2831'), tp_telefone('+55 69 99991 2587')),
+	'Cartao de Credito', NULL));
+
+INSERT INTO tb_cliente VALUES (tp_cliente('555.555.555-55', 'Júlia Pereira', to_date('28/05/1999', 'dd/mm/yy'), 'F', 
+	tp_endereco('55555-555', 88, 'Rua do Sol', 'São Marcos', 'São Luís', 'MA'), 
+	tp_arrray_fones(tp_telefone('+55 98 99680 1715'), tp_telefone('+55 98 99787 1785'), tp_telefone('+55 98 99177 9686'), tp_telefone('+55 98 97994 2094')),
+	'Pix', NULL));
+
+INSERT INTO tb_cliente VALUES (tp_cliente('444.444.444-44', 'Luís Amilton', to_date('07/01/1985', 'dd/mm/yy'), 'M', 
+	tp_endereco('44444-444', 1042, 'Avenida Almirante', 'Coqueiros', 'Florianópolis', 'SC'), 
+	tp_arrray_fones(tp_telefone('+55 49 98526 2678'), tp_telefone('+1 408 987 4345')),
+	'Pix', 
+	tp_nt_dependentes(tp_dependente('Rone Gadelha', to_date('22/02/2010', 'dd/mm/yy'), 'M'))));
+
+INSERT INTO tb_cliente VALUES (tp_cliente('333.333.333-33', 'Karen Cabral', to_date('25/08/1980', 'dd/mm/yy'), 'F', 
+	tp_endereco('33333-333', 102, 'Rua Paysandu', 'Cidade Velha', 'Belém', 'PA'), 
+	tp_arrray_fones(tp_telefone('+55 91 99547 0563'), tp_telefone('+54 9 432 929 1497'), tp_telefone('+54 9 532 999 9915')),
+	'Cartao de Debito', NULL));
+
+INSERT INTO tb_cliente VALUES (tp_cliente('222.222.222-22', 'Abelardo Barbosa', to_date('30/09/1977', 'dd/mm/yy'), 'M', 
+	tp_endereco('22222-222', 10, 'Avenida Pantanal', 'Amambaí', 'Campo Grande', 'MS'), 
+	tp_arrray_fones(tp_telefone('+55 67 96917 4131')),
+	'Cartao de Credito', 
+	tp_nt_dependentes(tp_dependente('Guilherme Araujo', to_date('12/06/2009', 'dd/mm/yy'), 'M'))));
+
+INSERT INTO tb_cliente VALUES (tp_cliente('111.111.111-11', 'Joel Müller', to_date('26/09/1967', 'dd/mm/yy'), 'M', 
+	tp_endereco('11111-111', 111, 'Avenida Santa Catarina', 'Água Verde', 'Blumenau', 'SC'), 
+	tp_arrray_fones(tp_telefone('+55 49 98234 8053')),
+	'Dinheiro', NULL));
+
+INSERT INTO tb_cliente VALUES (tp_cliente('100.100.100-10', 'Carla Ramos', to_date('03/12/2001', 'dd/mm/yy'), 'F', 
+	tp_endereco('10010-010', 84, 'Rua Chico Anysio', 'Aldeota', 'Fortaleza', 'CE'), 
+	tp_arrray_fones(tp_telefone('+55 85 98570 7654')),
+	'Cartao de Debito', 
+	tp_nt_dependentes(tp_dependente('Nicollas Eger', to_date('14/09/2008', 'dd/mm/yy'), 'M'))));
+
 -- Dependente
 -- Nested Table (?)
 
