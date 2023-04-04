@@ -37,7 +37,7 @@ CREATE TABLE tb_area OF tp_area (
 -- Brinquedo
 CREATE TABLE tb_brinquedo OF tp_brinquedo (
 	nome PRIMARY KEY,
-    area WITH ROWID REFERENCES tb_area,
+    area SCOPE IS tb_area,
     capacidade NOT NULL,
     restricao_de_idade NOT NULL,
     restricao_de_altura NOT NULL
