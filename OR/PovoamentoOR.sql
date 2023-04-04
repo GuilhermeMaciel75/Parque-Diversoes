@@ -216,16 +216,16 @@ INSERT INTO tb_operador VALUES (tp_operador('909.909.909-09', 'Fátima Alves', t
 -- Atendente 
 INSERT INTO tb_atendente VALUES (tp_atendente('200.200.200-20', 'Leonardo Lopes', to_date('29/02/1996', 'dd/mm/yy'), 'M',
 	tp_endereco('20020-020', 99, 'Rua do Futuro', 'Iputinga', 'Recife', 'PE'),
-	tp_array_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 'Banca A', NULL));
+	tp_array_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 5000.00, 'Banca A', NULL));
 
 INSERT INTO tb_atendente VALUES (tp_atendente('300.300.300-30', 'Leônidas Silva', to_date('09/03/1980', 'dd/mm/yy'), 'M',
 	tp_endereco('30030-030', 300, 'Estrada da Batalha', 'Prazeres', 'Jaboatão dos Guararapes', 'PE'),
-	tp_array_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 'Banca B', 
+	tp_array_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 4700.00, 'Banca B', 
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '200.200.200-20')));
 
 INSERT INTO tb_atendente VALUES (tp_atendente('400.400.400-40', 'Helena Souza', to_date('02/10/1988', 'dd/mm/yy'), 'F',
 	tp_endereco('40040-040', 40, 'Avenida Caxangá', 'Cordeiro', 'Recife', 'PE'),
-	tp_array_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 'Banca C', 
+	tp_array_fones(tp_telefone('+55 12 97288 8966'), tp_telefone('+1 678 799 3007')), 4700.00, 'Banca C', 
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '200.200.200-20')));
 
 -- Brinca 
