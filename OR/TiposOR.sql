@@ -251,34 +251,7 @@ CREATE OR REPLACE TYPE tp_bilheteria AS OBJECT (
 	cliente REF tp_cliente,
 	atendente REF tp_atendente,
 	promocao REF tp_promocao,
-	data_e_hora TIMESTAMP,
-
-	CONSTRUCTOR FUNCTION tp_bilheteria (SELF IN OUT NOCOPY tp_bilheteria, 
-		ingresso REF tp_ingresso, 
-		cliente REF tp_cliente, 
-		atendente REF tp_atendente,
-		promocao REF tp_promocao, 
-		data_e_hora TIMESTAMP) RETURN SELF AS RESULT
+	data_e_hora TIMESTAMP
 );
 /
 
-CREATE OR REPLACE TYPE BODY tp_bilheteria AS 
-
-	CONSTRUCTOR FUNCTION tp_bilheteria (SELF IN OUT NOCOPY tp_bilheteria, 
-		ingresso REF tp_ingresso, 
-		cliente REF tp_cliente, 
-		atendente REF tp_atendente,
-		promocao REF tp_promocao, 
-		data_e_hora TIMESTAMP) RETURN SELF AS RESULT IS
-
-	BEGIN 
-
-		SELF.ingresso := ingresso;
-		SELF.cliente := cliente;
-		SELF.atendente := atendente;
-		SELF.promocao := promocao;
-		SELF.data_e_hora := data_e_hora;
-
-	END;
-END;
-/

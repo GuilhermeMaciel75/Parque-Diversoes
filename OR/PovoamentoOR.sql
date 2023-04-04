@@ -263,7 +263,7 @@ INSERT INTO tb_brinca VALUES (tp_brinca((SELECT REF(B) FROM tb_brinquedo B WHERE
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '222.222.222-22')));
 
 -- Ingresso 
-INSERT INTO tb_ingresso VALUES (tb_ingresso(1, 110.00));
+INSERT INTO tb_ingresso VALUES (tp_ingresso(1, 110.00));
 INSERT INTO tb_ingresso VALUES (tp_ingresso(2, 150.00)); 
 INSERT INTO tb_ingresso VALUES (tp_ingresso(3, 200.00)); 
 INSERT INTO tb_ingresso VALUES (tp_ingresso(4, 110.00));
@@ -282,41 +282,42 @@ INSERT INTO tb_promocao VALUES (tp_promocao(5, 70, 'Sem acesso aos brinquedos do
 INSERT INTO tb_promocao VALUES (tp_promocao(6, 0, 'Sem Promoção',  to_date('08/10/2015', 'dd/mm/yy'),  to_date('31/12/2023', 'dd/mm/yy')));
 
 -- Bilheteria 
-INSERT INTO tb_bilheteria VALUES (tp_bilheteria(SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 1), 
+INSERT INTO tb_bilheteria VALUES (tp_bilheteria((SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 1), 
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '666.666.666-66'),
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '300.300.300-30'),
-	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 6), to_timestamp('03/03/2023 02:35:18', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO tb_bilheteria VALUES (tp_bilheteria(SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 2), 
+	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 6), to_timestamp('03/03/2023 02:35:18', 'DD/MM/YYYY HH:MI:SS')));
+INSERT INTO tb_bilheteria VALUES (tp_bilheteria((SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 2), 
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '222.222.222-22'),
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '300.300.300-30'),
-	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 5), to_timestamp('03/03/2023 04:05:44', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO tb_bilheteria VALUES (tp_bilheteria(SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 3), 
+	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 5), to_timestamp('03/03/2023 04:05:44', 'DD/MM/YYYY HH:MI:SS')));
+INSERT INTO tb_bilheteria VALUES (tp_bilheteria((SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 3), 
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '111.111.111-11'),
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '300.300.300-30'),
-	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 3), to_timestamp('03/03/2023 11:56:02', 'DD/MM/YYYY HH:MI:SS'));
+	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 3), to_timestamp('03/03/2023 11:56:02', 'DD/MM/YYYY HH:MI:SS')));
 
-INSERT INTO tb_bilheteria VALUES (tp_bilheteria(SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 4), 
+INSERT INTO tb_bilheteria VALUES (tp_bilheteria((SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 4), 
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '777.777.777-77'),
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '400.400.400-40'),
-	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 4), to_timestamp('27/04/2022 10:32:57', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO tb_bilheteria VALUES (tp_bilheteria(SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 5), 
+	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 4), to_timestamp('27/04/2022 10:32:57', 'DD/MM/YYYY HH:MI:SS')));
+INSERT INTO tb_bilheteria VALUES (tp_bilheteria((SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 5), 
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '333.333.333-33'),
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '400.400.400-40'),
-	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 2), to_timestamp('02/01/2023 08:15:33', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO tb_bilheteria VALUES (tp_bilheteria(SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 6), 
+	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 2), to_timestamp('02/01/2023 08:15:33', 'DD/MM/YYYY HH:MI:SS')));
+INSERT INTO tb_bilheteria VALUES (tp_bilheteria((SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 6), 
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '444.444.444-44'),
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '400.400.400-40'),
-	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 1), to_timestamp('13/07/2012 05:22:41', 'DD/MM/YYYY HH:MI:SS'));
+	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 1), to_timestamp('13/07/2012 05:22:41', 'DD/MM/YYYY HH:MI:SS')));
 
-INSERT INTO tb_bilheteria VALUES (tp_bilheteria(SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 7), 
+INSERT INTO tb_bilheteria VALUES (tp_bilheteria((SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 7), 
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '999.999.999-99'),
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '200.200.200-20'),
-	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 6), to_timestamp('03/03/2023 02:35:18', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO tb_bilheteria VALUES (tp_bilheteria(SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 8), 
+	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 6),  to_timestamp('22/12/2013 09:05:59', 'DD/MM/YYYY HH:MI:SS')));
+INSERT INTO tb_bilheteria VALUES (tp_bilheteria((SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 8), 
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '555.555.555-55'),
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '200.200.200-20'),
-	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 1), to_timestamp('03/03/2023 02:35:18', 'DD/MM/YYYY HH:MI:SS'));
-INSERT INTO tb_bilheteria VALUES (tp_bilheteria(SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 9), 
+	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 1),  to_timestamp('13/12/2019 04:44:29', 'DD/MM/YYYY HH:MI:SS')));
+INSERT INTO tb_bilheteria VALUES (tp_bilheteria((SELECT REF(I) FROM tb_ingresso I WHERE I.codigo_ingresso = 9), 
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '100.100.100-10'),
 	(SELECT REF(A) FROM tb_atendente A WHERE A.cpf = '200.200.200-20'),
-	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 3), to_timestamp('03/03/2023 02:35:18', 'DD/MM/YYYY HH:MI:SS'));
+	(SELECT REF(P) FROM tb_promocao P WHERE P.codigo_promocao = 3), to_timestamp('12/12/2019 04:44:29', 'DD/MM/YYYY HH:MI:SS')));
+
