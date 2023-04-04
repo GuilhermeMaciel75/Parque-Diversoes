@@ -41,7 +41,7 @@ CREATE TABLE tb_brinquedo OF tp_brinquedo (
     capacidade NOT NULL,
     restricao_de_idade NOT NULL,
     restricao_de_altura NOT NULL
-) NESTED TEBLE dependentes STORE AS nt_dependentes;
+) NESTED TABLE dependentes STORE AS nt_dependentes;
 /
 
 -- Operador 
