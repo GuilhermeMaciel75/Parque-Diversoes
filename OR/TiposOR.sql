@@ -202,14 +202,6 @@ ALTER TYPE tp_atendente
 ADD ATTRIBUTE (cpf_supervisor REF tp_atendente)
 CASCADE;
 
--- Joga 
-CREATE OR REPLACE TYPE tp_joga AS OBJECT (
-	cliente REF tp_cliente, 
-	nome_dependente REF tp_dependente, -- ********* VAI SER ASSIM? ********* 
-	nome_brinquedo REF tp_brinquedo
-);
-/
-
 -- Brinca
 CREATE OR REPLACE TYPE tp_brinca AS OBJECT (
 	nome_brinquedo REF tp_brinquedo,
