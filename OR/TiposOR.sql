@@ -107,6 +107,7 @@ CREATE OR REPLACE TYPE BODY tp_pessoa AS
 	END;
 END;
 /
+
 -- Cliente 
 CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
 	metodo_pagamento VARCHAR2(20)
@@ -114,14 +115,18 @@ CREATE OR REPLACE TYPE tp_cliente UNDER tp_pessoa (
 /
 
 -- Dependente
--- (Pode ser uma Nested Table(?))
 CREATE OR REPLACE TYPE tp_dependente AS OBJECT ( 
-	cpf_cliente REF tp_cliente, 
+	cliente REF tp_cliente,
 	nome VARCHAR2(25),
 	data_nascimento DATE,
 	sexo CHAR(1)
 );
 /
+
+-- Nested Table
+CREATE OR REPLACE TYPE tp_nt_dependentes AS TABLE OF tp_dependente;
+/
+
 -- Funcionário 
 CREATE OR REPLACE TYPE tp_funcionario UNDER tp_pessoa (
 	salario NUMBER(6,2),
@@ -159,10 +164,11 @@ CREATE OR REPLACE TYPE tp_area AS OBJECT (
 -- Brinquedo
 CREATE OR REPLACE TYPE tp_brinquedo AS OBJECT (
 	nome VARCHAR2(25),
-    area REF tp_area,
-    capacidade NUMBER(2),
-    restricao_de_idade NUMBER(2),
-    restricao_de_altura NUMBER(3,2), --Altura em metros
+    	area REF tp_area,
+    	capacidade NUMBER(2),
+    	restricao_de_idade NUMBER(2),
+    	restricao_de_altura NUMBER(3,2), --Altura em metros
+    	dependentes tp_nt_dependentes,
 
 	FINAL ORDER MEMBER FUNCTION comparaQtd(B tp_brinquedo) RETURN INTEGER
 );
