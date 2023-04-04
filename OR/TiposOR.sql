@@ -65,7 +65,8 @@ CREATE OR REPLACE TYPE BODY tp_endereco AS
 			SELF.bairro := bairro;
 			SELF.cidade := cidade;
 			SELF.estado := estado;
-
+			RETURN;
+			
 		END;
 
 END;

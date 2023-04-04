@@ -1,4 +1,12 @@
 --Teste CONSTRUCTOR FUNCTION tp_endereco
+DECLARE
+    endereco tp_endereco;
+BEGIN
+    endereco := tp_endereco('99999-999', '888', 'Rua Professor Severino', 'Varzea', 'Recife', 'PE');
+	DBMS_OUTPUT.PUT_LINE('CEP: ' || endereco.cep || ', Numero: ' || endereco.numero || ', Rua: ' || endereco.rua || ', Bairro: ' || endereco.bairro ||
+        ', Cidade: ' || endereco.cidade || ', Estado: ' || endereco.estado);
+END;
+/
 
 --Teste PROCEDURE exibirInformacoes 
 DECLARE
