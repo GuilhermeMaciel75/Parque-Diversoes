@@ -1,5 +1,6 @@
 --Teste CONSTRUCTOR FUNCTION tp_endereco
 
+
 --Teste PROCEDURE exibirInformacoes
 DECLARE
     cliente tp_cliente;
@@ -11,18 +12,16 @@ BEGIN
 END;
 /
 
---OVERRIDING
+-- OVERRIDING e de MEMBER FUNCTION salarioBonusNatal
 DECLARE
-    operador tp_operador;
+    V_atendente tp_atendente;
+	V_SALARIO NUMBER;
 BEGIN
-    SELECT VALUE(P) INTO operador FROM tb_operador P
-    WHERE P.cpf = '808.808.808-08';
-
-    operador.exibirInformacoes();
+	SELECT VALUE(A) INTO V_atendente FROM tb_atendente A WHERE A.cpf = '300.300.300-30';
+	V_atendente.exibirInformacoes();
+    V_SALARIO := V_atendente.salarioBonusNatal();
+	DBMS_OUTPUT.PUT_LINE('Salario com Bonus: ' || V_SALARIO);
 END;
-/
-
---Teste MEMBER FUNCTION salarioBonusNatal
 
 --Teste FINAL ORDER MEMBER FUNCTION comparaQtd
 
