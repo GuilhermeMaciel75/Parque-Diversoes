@@ -33,13 +33,28 @@ END;
 
 --Teste FINAL ORDER MEMBER FUNCTION comparaQtd
 DECLARE
-    brinquedo1 tp_brinquedo;
-    brinquedo2 tp_brinquedo;
+    brinquedo_1 tp_brinquedo;
+	brinquedo_2 tp_brinquedo;
+	diff NUMBER;
 BEGIN
-    SELECT VALUE(B) INTO brinquedo1 FROM tb_brinquedo B WHERE B.nome = 'Roda Gigante';
-    SELECT VALUE(B) INTO brinquedo2 FROM tb_brinquedo B WHERE B.nome = 'Ciclone';
+    SELECT VALUE(B) INTO brinquedo_1 FROM tb_brinquedo B
+    WHERE B.nome = 'Barca';
 
-    DBMS_OUTPUT.PUT_LINE('A diferenca de capacidade e: ' || brinquedo1.comparaQtd(brinquedo2));
+	SELECT VALUE(B2) INTO brinquedo_2 FROM tb_brinquedo B2
+    WHERE B2.nome = 'Roda Gigante';
+
+	diff := brinquedo_1.comparaQtd(brinquedo_2);
+
+    IF diff > 0 THEN 
+        DBMS_OUTPUT.PUT_LINE('O brinquedo do tipo ' || brinquedo_1.nome || ' tem maior capacidade do que do tipo ' || brinquedo_2.nome);
+    END IF;
+    IF diff = 0 THEN 
+        DBMS_OUTPUT.PUT_LINE('As capacidades dos brinquedos do tipo ' || brinquedo_1.nome || ' e do que do tipo ' || brinquedo_2.nome || ' são iguais.');
+    END IF;
+    IF diff < 0 THEN 
+        DBMS_OUTPUT.PUT_LINE('O brinquedo do tipo ' || brinquedo_2.nome || ' tem maior capacidade do que do tipo ' || brinquedo_1.nome);
+    END IF;
+	
 END;
 /
 
