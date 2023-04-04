@@ -21,8 +21,19 @@ BEGIN
     V_SALARIO := V_atendente.salarioBonusNatal();
 	DBMS_OUTPUT.PUT_LINE('Salario com Bonus: ' || V_SALARIO);
 END;
+/
 
 --Teste FINAL ORDER MEMBER FUNCTION comparaQtd
+DECLARE
+    brinquedo1 tp_brinquedo;
+    brinquedo2 tp_brinquedo;
+BEGIN
+    SELECT VALUE(B) INTO brinquedo1 FROM tb_brinquedo B WHERE B.nome = 'Roda Gigante';
+    SELECT VALUE(B) INTO brinquedo2 FROM tb_brinquedo B WHERE B.nome = 'Ciclone';
+
+    DBMS_OUTPUT.PUT_LINE('A diferenca de capacidade e: ' || brinquedo1.comparaQtd(brinquedo2));
+END;
+/
 
 --Teste MAP MEMBER FUNCTION descontoPorc
 DECLARE
@@ -31,5 +42,6 @@ DECLARE
 BEGIN
     SELECT VALUE(P) INTO promocao FROM tb_promocao P WHERE P.codigo_promocao = 1;
 	porcentagem := promocao.descontoPorc();
-	DBMS_OUTPUT.PUT_LINE('Porcentagem paga: ' || porcentagem);
+	DBMS_OUTPUT.PUT_LINE('Porcentagem paga: 0.' || porcentagem);
 END;
+/
