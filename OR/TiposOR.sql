@@ -194,8 +194,24 @@ CASCADE;
 
 -- Atendente
 CREATE OR REPLACE TYPE tp_atendente UNDER tp_funcionario (
-	banca VARCHAR2(25)
+	banca VARCHAR2(25),
+	OVERRIDING MEMBER PROCEDURE exibirInformacoes(SELF tp_atendente)
 );
+/
+
+CREATE OR REPLACE TYPE BODY tp_atendente AS 
+	OVERRIDING MEMBER PROCEDURE exibirInformacoes(SELF tp_atendente) IS
+	BEGIN
+		DBMS_OUTPUT.PUT_LINE('Informações de uma Pessoa');
+		DBMS_OUTPUT.PUT_LINE('CPF: ' || cpf);
+		DBMS_OUTPUT.PUT_LINE('Nome: ' || nome);
+		DBMS_OUTPUT.PUT_LINE('Data de Nascimento: ' || data_nascimento);
+		DBMS_OUTPUT.PUT_LINE('Sexo: ' || sexo);
+		DBMS_OUTPUT.PUT_LINE('Salario: ' || salario);
+		DBMS_OUTPUT.PUT_LINE('Banca: ' || Banca);
+
+	END;
+END;
 /
 
 ALTER TYPE tp_atendente 
