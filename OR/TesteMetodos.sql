@@ -1,7 +1,6 @@
 --Teste CONSTRUCTOR FUNCTION tp_endereco
 
-
---Teste PROCEDURE exibirInformacoes
+--Teste PROCEDURE exibirInformacoes 
 DECLARE
     cliente tp_cliente;
 BEGIN
@@ -12,7 +11,7 @@ BEGIN
 END;
 /
 
--- OVERRIDING e de MEMBER FUNCTION salarioBonusNatal
+--OVERRIDING e de MEMBER FUNCTION salarioBonusNatal
 DECLARE
     V_atendente tp_atendente;
 	V_SALARIO NUMBER;
