@@ -1,6 +1,17 @@
 --Teste CONSTRUCTOR FUNCTION tp_endereco
 
---Teste PROCEDURE exibirInformacoes OVERRIDING e de MEMBER FUNCTION salarioBonusNatal
+--Teste PROCEDURE exibirInformacoes 
+DECLARE
+    cliente tp_cliente;
+BEGIN
+    SELECT VALUE(P) INTO cliente FROM tb_cliente P
+    WHERE P.cpf = '111.111.111-11';
+
+    cliente.exibirInformacoes();
+END;
+/
+
+--OVERRIDING e de MEMBER FUNCTION salarioBonusNatal
 DECLARE
     V_atendente tp_atendente;
 	V_SALARIO NUMBER;
