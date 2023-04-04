@@ -178,17 +178,23 @@ END;
 
 -- Operador 
 CREATE OR REPLACE TYPE tp_operador UNDER tp_funcionario (
-	brinquedo REF tp_brinquedo,
-	cpf_supervisor REF tp_operador
+	brinquedo REF tp_brinquedo
 );
 /
 
+ALTER TYPE tp_operador 
+ADD ATTRIBUTE (cpf_supervisor REF tp_operador)
+CASCADE;
+
 -- Atendente
 CREATE OR REPLACE TYPE tp_atendente UNDER tp_funcionario (
-	banca VARCHAR2(25),
-	cpf_supervisor REF tp_atendente
+	banca VARCHAR2(25)
 );
 /
+
+ALTER TYPE tp_atendente 
+ADD ATTRIBUTE (cpf_supervisor REF tp_atendente)
+CASCADE;
 
 -- Joga 
 CREATE OR REPLACE TYPE tp_joga AS OBJECT (
@@ -218,8 +224,19 @@ CREATE OR REPLACE TYPE tp_promocao AS OBJECT (
 	desconto NUMBER(2), --Em porcentual
 	restricao VARCHAR2(50),
 	data_inicio DATE,
-	data_termino DATE
+	data_termino DATE,
+
+	MAP MEMBER FUNCTION descontoPorc RETURN NUMBER
 );
+/
+
+CREATE OR REPLACE TYPE BODY tp_promocao AS
+	MAP MEMBER FUNCTION descontoPorc RETURN NUMBER IS
+		p NUMBER(3,2) := 1 - desconto/100;
+	BEGIN
+		RETURN p;
+	END;
+END;
 /
 
 -- Bilheteria 
@@ -248,14 +265,14 @@ CREATE OR REPLACE TYPE BODY tp_bilheteria AS
 		promocao REF tp_promocao, 
 		data_e_hora TIMESTAMP) RETURN SELF AS RESULT IS
 
-		BEGIN 
+	BEGIN 
 
-			SELF.ingresso := ingresso;
-			SELF.cliente := cliente;
-			SELF.atendente := atendente;
-			SELF.promocao := promocao;
-			SELF.data_e_hora := data_e_hora;
+		SELF.ingresso := ingresso;
+		SELF.cliente := cliente;
+		SELF.atendente := atendente;
+		SELF.promocao := promocao;
+		SELF.data_e_hora := data_e_hora;
 
-		END;
+	END;
 END;
 /
