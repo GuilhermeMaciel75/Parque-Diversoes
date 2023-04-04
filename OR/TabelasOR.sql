@@ -22,7 +22,7 @@ CREATE TABLE tb_cliente OF tp_cliente (
 /
 
 -- Dependente
--- Nested Table (?)
+-- Nested Table
 
 -- Funcionário 
 -- (Não vai ter tabela)
@@ -41,7 +41,7 @@ CREATE TABLE tb_brinquedo OF tp_brinquedo (
     capacidade NOT NULL,
     restricao_de_idade NOT NULL,
     restricao_de_altura NOT NULL
-);
+) NESTED TEBLE dependentes STORE AS nt_dependentes;
 /
 
 -- Operador 
@@ -55,14 +55,6 @@ CREATE TABLE tb_operador OF tp_operador (
 CREATE TABLE tb_atendente OF tp_atendente (
 	cpf PRIMARY KEY,
 	banca NOT NULL
-);
-/
-
--- Joga 
-CREATE TABLE tb_joga OF tp_joga (
-	cliente WITH ROWID REFERENCES tb_cliente, 
-	nome_dependente WITH ROWID REFERENCES tb_dependente, -- ***************** Dependente vai ser Nested Table? ***************
-	nome_brinquedo WITH ROWID REFERENCES tb_brinquedo
 );
 /
 
