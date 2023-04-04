@@ -119,23 +119,27 @@ INSERT INTO tb_brinquedo VALUES (tp_brinquedo('Ciclone', (SELECT REF(A) FROM tb_
 INSERT INTO tb_operador VALUES (tp_operador('500.500.500-50', 'Juma Marruá', to_date('23/06/1990', 'dd/mm/yy'), 'F',
 	tp_endereco('50050-050', 121, 'Avenida Central', 'Afogados', 'Recife', 'PE'),
 	tp_array_fones(tp_telefone('+55 22 99184 4150')), 
+	6000,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Super Tornado'), NULL));
 
 INSERT INTO tb_operador VALUES (tp_operador('600.600.600-60', 'José Leôncio', to_date('01/07/1972', 'dd/mm/yy'), 'M',
 	tp_endereco('60060-060', 67, 'Rua da Praia', 'Pilar', 'Ilha de Itamaracá', 'PE'),
 	tp_array_fones(tp_telefone('+55 84 99747 6532'), tp_telefone('+1 408 788 3477')),
+	5500.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Thunder'), 
 	(SELECT REF(O) FROM tb_operador O WHERE O.cpf = '500.500.500-50')));
 
 INSERT INTO tb_operador VALUES (tp_operador('700.700.700-70', 'Tereza Soares', to_date('31/01/1982','dd/mm/yy'), 'F',
 	tp_endereco('70070-070', 31, 'Avenida Luiz Gonzaga', 'Bela Vista', 'Moreno', 'PE'),
 	tp_array_fones(tp_telefone('+55 92 99957 0516')),
+	5500.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Over Loop'), 
 	(SELECT REF(O) FROM tb_operador O WHERE O.cpf = '500.500.500-50')));
 
 INSERT INTO tb_operador VALUES (tp_operador('800.800.800-80', 'Clara Nascimento', to_date('28/10/1979', 'dd/mm/yy'), 'F',
 	tp_endereco('80080-080', 101, 'Estrada Nova', 'São Francisco', 'Cabo de Santo Agostinho', 'PE'),
 	tp_array_fones(tp_telefone('+55 79 98230 6697')),
+	5500.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Samba'), 
 	(SELECT REF(O) FROM tb_operador O WHERE O.cpf = '500.500.500-50')));
 
@@ -143,11 +147,13 @@ INSERT INTO tb_operador VALUES (tp_operador('800.800.800-80', 'Clara Nascimento'
 INSERT INTO tb_operador VALUES (tp_operador('900.900.900-90', 'Jaime Almeida', to_date('21/08/1991', 'dd/mm/yy'), 'M',
 	tp_endereco('90090-090', 72, 'Rua do Navio', 'Piedade', 'Jaboatão dos Guararapes', 'PE'),
 	tp_array_fones(tp_telefone('+55 86 96947 4295')), 
+	5500.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Splash'), NULL));
 
 INSERT INTO tb_operador VALUES (tp_operador('101.101.101-01', 'Charles Xavier', to_date('13/05/1987', 'dd/mm/yy'), 'M',
 	tp_endereco('10110-101', 2034, 'Rua dos Girassóis', 'Centro', 'Camaragibe', 'PE'),
 	tp_array_fones(tp_telefone('+55 31 98050 6343'), tp_telefone('+55 31 99631 3695')),
+	5500.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Tchibum'), 
 	(SELECT REF(O) FROM tb_operador O WHERE O.cpf = '900.900.900-90')));
 
@@ -155,11 +161,13 @@ INSERT INTO tb_operador VALUES (tp_operador('101.101.101-01', 'Charles Xavier', 
 INSERT INTO tb_operador VALUES (tp_operador('202.202.202-02', 'Ana Nóbrega', to_date('25/12/1984', 'dd/mm/yy'), 'F',
 	tp_endereco('20220-202', 27, 'Rua Machado de Assis', 'Madalena', 'Recife', 'PE'),
 	tp_array_fones(tp_telefone('+55 98 99284 3640')),
+	6000.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Mansao do Terror'), NULL));
 
 INSERT INTO tb_operador VALUES (tp_operador('303.303.303-03', 'Marcos Antônio', to_date('07/02/1988', 'dd/mm/yy'), 'M',
 	tp_endereco('30330-303', 99, 'Estrada da Glória', 'Campo Grande', 'Recife', 'PE'),
 	tp_array_fones(tp_telefone('+55 85 97250 2315')),
+	5500.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Trem Fantasma'), 
 	(SELECT REF(O) FROM tb_operador O WHERE O.cpf = '202.202.202-02')));
 
@@ -167,17 +175,20 @@ INSERT INTO tb_operador VALUES (tp_operador('303.303.303-03', 'Marcos Antônio',
 INSERT INTO tb_operador VALUES (tp_operador('404.404.404-04', 'Luiza Texeira', to_date('24/11/1983', 'dd/mm/yy'), 'F',
 	tp_endereco('40040-040', 40, 'Avenida Caxangá', 'Cordeiro', 'Recife', 'PE'),
 	tp_array_fones(tp_telefone('+55 81 97954 0000')),
+	6000.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Carrocel'), NULL));
 
 INSERT INTO tb_operador VALUES (tp_operador('505.505.505-05', 'Rafael Martins', to_date('07/10/1985', 'dd/mm/yy'), 'M',
 	tp_endereco('50550-505', 341, 'Rua do Beija-flor', 'Rio Doce', 'Olinda', 'PE'),
 	tp_array_fones(tp_telefone('+55 81 98787 0808')),
+	5500.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Trampolim'), 
 	(SELECT REF(O) FROM tb_operador O WHERE O.cpf = '404.404.404-04')));
 
 INSERT INTO tb_operador VALUES (tp_operador('606.606.606-06', 'Angélica Moraes', to_date('20/02/1989', 'dd/mm/yy'), 'F',
 	tp_endereco('60660-606', 29, 'Rua Capibaribe', 'Jardim Atlântico', 'Olinda', 'PE'),
 	tp_array_fones(tp_telefone('+55 81 98090 7040')),
+	5500.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Trenzinho'), 
 	(SELECT REF(O) FROM tb_operador O WHERE O.cpf = '404.404.404-04')));
 
@@ -185,17 +196,20 @@ INSERT INTO tb_operador VALUES (tp_operador('606.606.606-06', 'Angélica Moraes'
 INSERT INTO tb_operador VALUES (tp_operador('707.707.707-07', 'Horácio Espíndola', to_date('09/06/1970', 'dd/mm/yy'), 'M',
 	tp_endereco('70770-707', 97, 'Rua Almirante', 'Centro', 'São Lourenço da Mata', 'PE'),
 	tp_array_fones(tp_telefone('+55 81 95455 5675'), tp_telefone('+55 81 94345 7809')), 
+	6000.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Roda Gigante'), NULL));
 
 INSERT INTO tb_operador VALUES (tp_operador('808.808.808-08', 'Solange Aguiar', to_date('28/12/1984', 'dd/mm/yy'), 'F',
 	tp_endereco('80880-808', 126, 'Estrada dos Alfaiates', 'Caetés I', 'Abreu e Lima', 'PE'),
 	tp_array_fones(tp_telefone('+55 81 97050 0101')), 
+	5500.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Barca'),
 	(SELECT REF(O) FROM tb_operador O WHERE O.cpf = '707.707.707-07')));
 
 INSERT INTO tb_operador VALUES (tp_operador('909.909.909-09', 'Fátima Alves', to_date('13/05/1980', 'dd/mm/yy'), 'F',
 	tp_endereco('90990-909', 202, 'Avenida dos Poetas', 'Várzea', 'Recife', 'PE'),
 	tp_array_fones(tp_telefone('+55 81 92109 6700')), 
+	5500.00,
 	(SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Ciclone'),
 	(SELECT REF(O) FROM tb_operador O WHERE O.cpf = '707.707.707-07')));
 
