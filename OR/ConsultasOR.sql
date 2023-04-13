@@ -57,16 +57,39 @@ SELECT c.nome, c.cpf, c.endereco.estado
 FROM tb_cliente c, TABLE(c.telefone) T
 WHERE REGEXP_LIKE(T.numero_telefone, '\+55 81');
 
--- Mostra os telefones dos operadores que trabalham na área aquática do parque, com o nome de seus respectivos donos 
+-- Mostra os telefones dos operadores que trabalham na área aquatica do parque, com o nome de seus respectivos donos 
 SELECT O.nome, T.* 
-FROM tb_operador O, TABLE(telefone) T
-WHERE DEREF(DEREF(O.brinquedo).area).categoria = 'Aquatico';
+FROM tb_operador O, TABLE(O.telefone) T
+WHERE O.brinquedo.area.categoria = 'Aquatico';
+
+-- Mostra a quantidade total de numeros de telefone dos operadores da área aquática
+DECLARE
+	QT_SPLASH NUMBER(1);
+	QT_TCHIBUM NUMBER(1);
+	RESULTADO NUMBER(2);
+BEGIN
+    SELECT COUNT(*) INTO QT_SPLASH
+        FROM tb_operador O, TABLE(O.telefone) T
+        WHERE O.brinquedo.nome = 'Splash';
+
+	SELECT COUNT(*) INTO QT_TCHIBUM
+        FROM tb_operador O, TABLE(O.telefone) T
+        WHERE O.brinquedo.nome = 'Tchibum';
+
+	RESULTADO := QT_SPLASH + QT_TCHIBUM;
+
+	DBMS_OUTPUT.PUT_LINE('A quantidade total de telefones dos operadores na área quática é: ' || RESULTADO);
+	DBMS_OUTPUT.PUT_LINE('Sendo ' || QT_SPLASH || ' do operador do Splash e ' || QT_TCHIBUM || ' do operador do Tchibum');
+    
+END;
+/
 
 -- CONSULTA À NESTED TABLE 
 
 -- Consultar os nomes dos dependentes que foram no Carrocel
 SELECT nome FROM TABLE(SELECT B.dependentes FROM tb_brinquedo B WHERE nome = 'Carrocel');
 /
+
 --Retorne a quantidade e a idade média dos dependentes de clientes que frequentam o parque e brincam no carrosel
 SELECT COUNT(*) AS QTD_DEPENDENTES ,AVG(TRUNC(MONTHS_BETWEEN(SYSDATE, D.data_nascimento)/12)) AS IDADE_MEDIA FROM TABLE (
     SELECT B.dependentes FROM tb_brinquedo B
