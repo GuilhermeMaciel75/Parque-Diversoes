@@ -41,6 +41,7 @@ SELECT COUNT(*) AS QTD_DEPENDENTES ,AVG(TRUNC(MONTHS_BETWEEN(SYSDATE, D.data_nas
     SELECT B.dependentes FROM tb_brinquedo B
     WHERE B.nome = 'Carrocel'
 ) D;
+/
 
 --Exiba as informações de todos os Funcionários do parque
 DECLARE 
@@ -75,4 +76,13 @@ BEGIN
     END LOOP;
 	CLOSE C_INFO2;
 END;
+/
+
+--Retorne o CPF do cliente, bem como o valor do ingresso, a porcentagem a ser paga, e o valor efetivamente pago por cada ingresso
+SELECT DEREF(B.cliente).cpf as CPF_CLIENTE,
+    DEREF(B.ingresso).valor AS VALOR_INGRESSO, 
+    DEREF(B.promocao).descontoPorc() AS VALOR_DESCONTO,
+    DEREF(B.ingresso).valor * DEREF(B.promocao).descontoPorc() AS VALOR_PAGO
+    FROM tb_bilheteria B
+/
 
