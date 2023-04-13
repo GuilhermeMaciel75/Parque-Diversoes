@@ -64,6 +64,16 @@ INSERT INTO tb_cliente VALUES (tp_cliente('100.100.100-10', 'Carla Ramos', to_da
 	tp_array_fones(tp_telefone('+55 85 98570 7654')),
 	'Cartao de Debito'));
 
+INSERT INTO tb_cliente VALUES (tp_cliente('888.888.898-99', 'Adalto Joaquim', to_date('20/09/2020', 'dd/mm/yy'), 'M', 
+	tp_endereco('88888-888', 13, 'Estrada dos Viajantes', 'Goiabeiras', 'Vitória', 'ES'), 
+	tp_array_fones(tp_telefone('+55 27 98431 0816'), tp_telefone('+55 27 98741 2487')),
+	'Cartao de Debito'));
+
+INSERT INTO tb_cliente VALUES (tp_cliente('888.888.998-99', 'Adalto Joaquim', to_date('20/09/2022', 'dd/mm/yy'), 'M', 
+	tp_endereco('88888-888', 13, 'Estrada dos Viajantes', 'Goiabeiras', 'Vitória', 'ES'), 
+	tp_array_fones(tp_telefone('+55 27 98431 0816'), tp_telefone('+55 27 98741 2487')),
+	'Cartao de Debito'));
+
 -- Dependente
 -- Nested Table
 
@@ -261,6 +271,10 @@ INSERT INTO tb_brinca VALUES (tp_brinca((SELECT REF(B) FROM tb_brinquedo B WHERE
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '111.111.111-11')));
 INSERT INTO tb_brinca VALUES (tp_brinca((SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Samba'),
 	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '222.222.222-22')));
+INSERT INTO tb_brinca VALUES (tp_brinca((SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Mansao do Terror'),
+	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '888.888.898-99')));
+INSERT INTO tb_brinca VALUES (tp_brinca((SELECT REF(B) FROM tb_brinquedo B WHERE B.nome = 'Mansao do Terror'),
+	(SELECT REF(C) FROM tb_cliente C WHERE C.cpf = '888.888.998-99')));
 
 -- Ingresso 
 INSERT INTO tb_ingresso VALUES (tp_ingresso(1, 110.00));
