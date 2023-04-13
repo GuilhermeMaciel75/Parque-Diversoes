@@ -35,3 +35,10 @@ WHERE cpf_supervisor IS NULL;
 
 -- Consultar os nomes dos dependentes que foram no Carrocel
 SELECT nome FROM TABLE(SELECT B.dependentes FROM tb_brinquedo B WHERE nome = 'Carrocel');
+
+--Retorne a quantidade e a idade média dos dependentes de clientes que frequentam o parque e brincam no carrosel
+SELECT COUNT(*) AS QTD_DEPENDENTES ,AVG(TRUNC(MONTHS_BETWEEN(SYSDATE, D.data_nascimento)/12)) AS IDADE_MEDIA FROM TABLE (
+    SELECT B.dependentes FROM tb_brinquedo B
+    WHERE B.nome = 'Carrocel'
+) D;
+
