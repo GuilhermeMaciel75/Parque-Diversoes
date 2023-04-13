@@ -23,6 +23,14 @@ SELECT DEREF(B.ingresso).valor - DEREF(B.promocao).desconto AS Valor
 FROM tb_bilheteria B 
 WHERE DEREF(B.promocao).restricao = 'Desconto Aniversário';
 /
+
+-- Verifica quantos clientes burlaram a restrição de idade de um brinquedo
+SELECT DEREF(b.nome_brinquedo).nome, COUNT(*)
+FROM tb_brinca b
+WHERE DEREF(b.nome_brinquedo).restricao_de_idade > SOME(SELECT TRUNC(MONTHS_BETWEEN(SYSDATE, DEREF(b.cliente).data_nascimento)/12) FROM dual)
+GROUP BY DEREF(b.nome_brinquedo).nome;
+/
+
 -- CONSULTA À VARRAY
 
 -- Mostrar nome, cpf e telefones do "Atendente Chefe" (supervisor)
