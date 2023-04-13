@@ -57,6 +57,11 @@ SELECT c.nome, c.cpf, c.endereco.estado
 FROM tb_cliente c, TABLE(c.telefone) T
 WHERE REGEXP_LIKE(T.numero_telefone, '\+55 81');
 
+-- Mostra os telefones dos operadores que trabalham na área aquática do parque, com o nome de seus respectivos donos 
+SELECT O.nome, T.* 
+FROM tb_operador O, TABLE(telefone) T
+WHERE DEREF(DEREF(O.brinquedo).area).categoria = 'Aquatico';
+
 -- CONSULTA À NESTED TABLE 
 
 -- Consultar os nomes dos dependentes que foram no Carrocel
