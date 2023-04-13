@@ -29,7 +29,11 @@ WHERE DEREF(B.promocao).restricao = 'Desconto Aniversário';
 SELECT nome, cpf, T.* 
 FROM tb_atendente A, TABLE(A.telefone) T 
 WHERE cpf_supervisor IS NULL;
-/
+
+-- Mostra nome, cpf e estado dos clientes cujos números de telefone são de Pernambuco
+SELECT c.nome, c.cpf, c.endereco.estado
+FROM tb_cliente c, TABLE(c.telefone) T
+WHERE REGEXP_LIKE(T.numero_telefone, '\+55 81');
 
 -- CONSULTA À NESTED TABLE 
 
