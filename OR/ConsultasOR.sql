@@ -7,8 +7,10 @@ CONSULTA À VARRAY
 CONSULTA À NESTED TABLE
 */
 
--- SELECT REF
-
+-- Selecionar alguns dados dos atendentes
+SELECT nome AS Nome, cpf AS CPF, A.endereco.rua AS Rua, A.endereco.numero AS Número, 
+A.endereco.bairro AS Bairro, A.endereco.cidade AS Cidade, A.endereco.estado AS Estado
+FROM tb_atendente A;
 
 -- SELECT DEREF
 -- Selecionar os clientes que foram no Trem Fantasma
@@ -30,6 +32,18 @@ FROM tb_brinca b
 WHERE DEREF(b.nome_brinquedo).restricao_de_idade > SOME(SELECT TRUNC(MONTHS_BETWEEN(SYSDATE, DEREF(b.cliente).data_nascimento)/12) FROM dual)
 GROUP BY DEREF(b.nome_brinquedo).nome;
 /
+
+-- Pegar nomes e endereços dos operadores de brinquedos aquáticos
+SELECT nome, O.endereco.rua AS Rua, O.endereco.numero AS Número, 
+O.endereco.bairro AS Bairro, O.endereco.cidade AS Cidade, O.endereco.estado AS Estado
+FROM tb_operador O
+WHERE DEREF(DEREF(O.brinquedo).area).categoria = 'Aquatico';
+
+
+-- Nomes e CPF dos clientes atendidos pelo atendente da Banca A
+SELECT DEREF(B.cliente).nome AS Nome, DEREF(B.cliente).cpf AS CPF
+FROM tb_bilheteria B
+WHERE DEREF(A.atendente).banca = 'Banca A';
 
 -- CONSULTA À VARRAY
 
