@@ -11,6 +11,7 @@ CONSULTA À NESTED TABLE
 SELECT nome AS Nome, cpf AS CPF, A.endereco.rua AS Rua, A.endereco.numero AS Número, 
 A.endereco.bairro AS Bairro, A.endereco.cidade AS Cidade, A.endereco.estado AS Estado
 FROM tb_atendente A;
+/
 
 -- SELECT DEREF
 -- Selecionar os clientes que foram no Trem Fantasma
@@ -38,12 +39,13 @@ SELECT nome, O.endereco.rua AS Rua, O.endereco.numero AS Número,
 O.endereco.bairro AS Bairro, O.endereco.cidade AS Cidade, O.endereco.estado AS Estado
 FROM tb_operador O
 WHERE DEREF(DEREF(O.brinquedo).area).categoria = 'Aquatico';
-
+/
 
 -- Nomes e CPF dos clientes atendidos pelo atendente da Banca A
 SELECT DEREF(B.cliente).nome AS Nome, DEREF(B.cliente).cpf AS CPF
 FROM tb_bilheteria B
 WHERE DEREF(A.atendente).banca = 'Banca A';
+/
 
 -- CONSULTA À VARRAY
 
@@ -51,16 +53,19 @@ WHERE DEREF(A.atendente).banca = 'Banca A';
 SELECT nome, cpf, T.* 
 FROM tb_atendente A, TABLE(A.telefone) T 
 WHERE cpf_supervisor IS NULL;
+/
 
 -- Mostra nome, cpf e estado dos clientes cujos números de telefone são de Pernambuco
 SELECT c.nome, c.cpf, c.endereco.estado
 FROM tb_cliente c, TABLE(c.telefone) T
 WHERE REGEXP_LIKE(T.numero_telefone, '\+55 81');
+/
 
 -- Mostra os telefones dos operadores que trabalham na área aquatica do parque, com o nome de seus respectivos donos 
 SELECT O.nome, T.* 
 FROM tb_operador O, TABLE(O.telefone) T
 WHERE O.brinquedo.area.categoria = 'Aquatico';
+/
 
 -- Mostra a quantidade total de numeros de telefone dos operadores da área aquática
 DECLARE
