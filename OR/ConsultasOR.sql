@@ -13,6 +13,16 @@ A.endereco.bairro AS Bairro, A.endereco.cidade AS Cidade, A.endereco.estado AS E
 FROM tb_atendente A;
 /
 
+-- Contar quantos clientes brincam em cada brinquedo
+SELECT (B.nome_brinquedo).nome, COUNT((B.cliente).nome)
+FROM tb_brinca B
+GROUP BY B.nome_brinquedo;
+
+-- Contar quantos brinquedos cada cliente brinca
+SELECT (B.cliente).nome, COUNT((B.nome_brinquedo).nome)
+FROM tb_brinca B
+GROUP BY (B.cliente).nome;
+
 -- SELECT DEREF
 -- Selecionar os clientes que foram no Trem Fantasma
 SELECT C.nome AS Nome
