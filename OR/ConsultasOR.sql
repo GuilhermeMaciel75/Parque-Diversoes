@@ -17,11 +17,13 @@ FROM tb_atendente A;
 SELECT (B.nome_brinquedo).nome, COUNT((B.cliente).nome)
 FROM tb_brinca B
 GROUP BY B.nome_brinquedo;
+/
 
 -- Contar quantos brinquedos cada cliente brinca
 SELECT (B.cliente).nome, COUNT((B.nome_brinquedo).nome)
 FROM tb_brinca B
 GROUP BY (B.cliente).nome;
+/
 
 -- SELECT DEREF
 -- Selecionar os clientes que foram no Trem Fantasma
@@ -110,6 +112,12 @@ SELECT COUNT(*) AS QTD_DEPENDENTES ,AVG(TRUNC(MONTHS_BETWEEN(SYSDATE, D.data_nas
     SELECT B.dependentes FROM tb_brinquedo B
     WHERE B.nome = 'Carrocel'
 ) D;
+/
+
+-- Contar a quantidade de dependentes por brinquedo
+SELECT B.nome, COUNT(*)
+FROM tb_brinquedo B, TABLE(SELECT B1.dependentes FROM tb_brinquedo B1 WHERE B1.nome = B.nome)
+GROUP BY B.nome;
 /
 
 --Exiba as informações de todos os Funcionários do parque
