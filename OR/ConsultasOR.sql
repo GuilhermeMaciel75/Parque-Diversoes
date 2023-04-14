@@ -59,6 +59,14 @@ FROM tb_bilheteria B
 WHERE DEREF(B.atendente).banca = 'Banca A';
 /
 
+
+-- Retorna o cliente mais antigo, seu nome, CPF e quantidade de ingressos comprados 
+SELECT DEREF(B.cliente).nome, DEREF(B.cliente).cpf, COUNT(*) AS num_ingressos_comprados
+FROM tb_bilheteria B
+WHERE B.data_e_hora = (SELECT MIN(data_e_hora) FROM tb_bilheteria)
+GROUP BY DEREF(B.cliente).nome, DEREF(B.cliente).cpf, DEREF(B.promocao);
+/
+
 -- CONSULTA À VARRAY
 
 -- Mostrar nome, cpf e telefones do "Atendente Chefe" (supervisor)
