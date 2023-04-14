@@ -54,7 +54,7 @@ WHERE DEREF(DEREF(O.brinquedo).area).categoria = 'Aquatico';
 -- Nomes e CPF dos clientes atendidos pelo atendente da Banca A
 SELECT DEREF(B.cliente).nome AS Nome, DEREF(B.cliente).cpf AS CPF
 FROM tb_bilheteria B
-WHERE DEREF(A.atendente).banca = 'Banca A';
+WHERE DEREF(B.atendente).banca = 'Banca A';
 /
 
 -- CONSULTA À VARRAY
